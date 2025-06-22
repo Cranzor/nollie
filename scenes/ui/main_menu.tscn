@@ -1,0 +1,149 @@
+[gd_scene load_steps=11 format=3 uid="uid://butslodhti3t2"]
+
+[ext_resource type="Script" uid="uid://08uvs7fh7c86" path="res://scenes/ui/main_menu.gd" id="1_0dkrt"]
+[ext_resource type="Texture2D" uid="uid://c5wotinim0tl1" path="res://icons/skip_previous.svg" id="2_8uxxo"]
+[ext_resource type="Texture2D" uid="uid://co8tby0qiyoda" path="res://icons/settings.svg" id="2_ei257"]
+[ext_resource type="Texture2D" uid="uid://t6dgwb67jqns" path="res://icons/play_circle.svg" id="2_wk0pr"]
+[ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="3_p8ri8"]
+[ext_resource type="Texture2D" uid="uid://c7yb0d1b1m7ww" path="res://icons/folder.svg" id="3_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://c5to1d2lkp27b" path="res://icons/skip_next.svg" id="4_ei257"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubpvv"]
+bg_color = Color(0.117647, 0.843137, 0.376471, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arv2f"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0dkrt")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gl0q7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Settings" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("2_ei257")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_8uxxo")
+
+[node name="PlayButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("2_wk0pr")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_ei257")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.168627)
+layout_mode = 2
+
+[node name="FolderButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("3_wk0pr")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ubpvv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_p8ri8")
+theme_override_font_sizes/font_size = 18
+text = "Connect to Spotify"
+
+[node name="SpotifyToggle" type="CheckButton" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_p8ri8")
+text = "Select a local music folder or
+connect to Spotify to get started."
+horizontal_alignment = 1
+
+[node name="MusicFolderDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a Directory"
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="SpotifySetupMessage" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_arv2f")
+
+[node name="Label" type="Label" parent="SpotifySetupMessage"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_p8ri8")
+theme_override_font_sizes/font_size = 12
+text = "Open the settings and enter your Spotify client ID and secret."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_mouse_exited"]

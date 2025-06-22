@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhufehrqs7psi"]
+
+[ext_resource type="Script" uid="uid://hmugvw5271n2" path="res://scenes/game_state_tracker/game_state_tracker.gd" id="1_c7jn2"]
+
+[node name="GameStateTracker" type="Node"]
+script = ExtResource("1_c7jn2")
+
+[node name="AButtonTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="LeftRightTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="AButtonTimer" to="." method="_on_a_button_timer_timeout"]
+[connection signal="timeout" from="LeftRightTimer" to="." method="_on_left_right_timer_timeout"]

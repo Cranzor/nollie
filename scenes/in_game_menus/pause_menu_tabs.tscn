@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxq3ytd8wrw06"]
+
+[ext_resource type="Script" uid="uid://efhwreqe2h80" path="res://scenes/in_game_menus/pause_menu_tabs.gd" id="1_vb55a"]
+
+[node name="PauseMenuTabs" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vb55a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Pause"
+
+[node name="Skater" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Skater"
+
+[node name="Challenges" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Challenges"
+
+[node name="Profile" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Profile"

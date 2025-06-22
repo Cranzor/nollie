@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqyaql2b1i7p7"]
+
+[ext_resource type="Script" uid="uid://dq1qpkoyfw73n" path="res://scenes/music_player/local_player.gd" id="1_er57c"]
+
+[node name="LocalPlayer" type="Node"]
+script = ExtResource("1_er57c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp7m117vpt0vx"]
+
+[ext_resource type="Script" uid="uid://dukdfu6rhx0v0" path="res://scenes/main_scene/main.gd" id="1_k0xv7"]
+[ext_resource type="PackedScene" uid="uid://bcum7fsxxai3w" path="res://scenes/music_player/music_manager.tscn" id="1_p5fyt"]
+[ext_resource type="PackedScene" uid="uid://cubimvb7ees1l" path="res://scenes/ui/song_display.tscn" id="2_x58px"]
+[ext_resource type="Script" uid="uid://xnix6wp8w8nw" path="res://window_canvas.gd" id="3_j04as"]
+[ext_resource type="Script" uid="uid://c5kd0bqd56bfl" path="res://sprite_2d.gd" id="4_ylb77"]
+[ext_resource type="PackedScene" uid="uid://butslodhti3t2" path="res://scenes/ui/main_menu.tscn" id="6_mxx3b"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_k0xv7")
+
+[node name="MusicManager" parent="." instance=ExtResource("1_p5fyt")]
+
+[node name="SongDisplayWindow" type="Window" parent="."]
+transparent_bg = true
+title = "SongDisplay"
+initial_position = 1
+size = Vector2i(1, 1)
+borderless = true
+always_on_top = true
+transparent = true
+unfocusable = true
+
+[node name="Node2D" type="Node2D" parent="SongDisplayWindow"]
+script = ExtResource("3_j04as")
+
+[node name="SongDisplay" parent="SongDisplayWindow" instance=ExtResource("2_x58px")]
+
+[node name="Area2D" type="Area2D" parent="SongDisplayWindow/SongDisplay"]
+position = Vector2(-1, -1)
+script = ExtResource("4_ylb77")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SongDisplayWindow/SongDisplay/Area2D"]
+polygon = PackedVector2Array(-730, -60, 0, -60, 0, 0, -730, 0)
+
+[node name="MainMenu" parent="." instance=ExtResource("6_mxx3b")]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcum7fsxxai3w"]
+
+[ext_resource type="Script" uid="uid://fr6m8bjnh03m" path="res://scenes/music_player/music_manager.gd" id="1_fj2lw"]
+[ext_resource type="PackedScene" uid="uid://bqyaql2b1i7p7" path="res://scenes/music_player/local_player.tscn" id="2_nu6dr"]
+[ext_resource type="PackedScene" uid="uid://we07vp3nbqis" path="res://scenes/music_player/spotify_player.tscn" id="3_lm5yb"]
+[ext_resource type="PackedScene" uid="uid://bhufehrqs7psi" path="res://scenes/game_state_tracker/game_state_tracker.tscn" id="4_1sdgf"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_fj2lw")
+
+[node name="LocalPlayer" parent="." instance=ExtResource("2_nu6dr")]
+
+[node name="SpotifyPlayer" parent="." instance=ExtResource("3_lm5yb")]
+
+[node name="GameStateTracker" parent="." instance=ExtResource("4_1sdgf")]
+
+[connection signal="pause_status_changed" from="GameStateTracker" to="." method="_on_game_state_tracker_pause_status_changed"]

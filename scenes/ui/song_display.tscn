@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://cubimvb7ees1l"]
+
+[ext_resource type="Texture2D" uid="uid://cmgsqcsdrwi1h" path="res://icons/musicOn.png" id="1_6i5vd"]
+[ext_resource type="Script" uid="uid://cailbhg6e8onx" path="res://scenes/ui/song_display.gd" id="1_g7pr0"]
+[ext_resource type="FontFile" uid="uid://bwp4dk7cub62w" path="res://fonts/Titillium_Web/TitilliumWeb-Italic.ttf" id="2_0nvam"]
+[ext_resource type="Texture2D" uid="uid://jvelle1in3vn" path="res://icons/xbox_rs_outline_orange_gray.png" id="3_0nvam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nvam"]
+bg_color = Color(0.0588235, 0.0588235, 0.0588235, 0.784314)
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+
+[node name="SongDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_g7pr0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -379.0
+offset_top = -54.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0.803922)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nvam")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="MusicIcon" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_6i5vd")
+expand_mode = 1
+
+[node name="SongTitle" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0nvam")
+theme_override_font_sizes/font_size = 35
+text = "The Kickflips - Nollie Blues"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_vertical = 4
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="SongTitle2" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0nvam")
+theme_override_font_sizes/font_size = 35
+text = "The Heelflips - Fakie Rollaway (Live Version)"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+
+[node name="RightStick" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_0nvam")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 22
+
+[node name="Skip" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.670588, 0.694118, 0.713726, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0nvam")
+theme_override_font_sizes/font_size = 35
+text = "Skip"
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

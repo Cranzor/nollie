@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4m54q1xcea0j"]
+
+[ext_resource type="FontFile" uid="uid://cyajayhao7ud8" path="res://fonts/Titillium_Web/TitilliumWeb-Bold.ttf" id="1_hgdat"]
+[ext_resource type="Texture2D" uid="uid://cmgsqcsdrwi1h" path="res://icons/musicOn.png" id="2_aicgo"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 46.0
+offset_top = -37.0
+offset_right = 99.0
+offset_bottom = 116.0
+theme_override_fonts/font = ExtResource("1_hgdat")
+theme_override_font_sizes/font_size = 100
+text = "T"
+
+[node name="P" type="Label" parent="."]
+offset_left = 45.0
+offset_top = 39.0
+offset_right = 104.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("1_hgdat")
+theme_override_font_sizes/font_size = 100
+text = "P"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 110.0
+offset_top = 39.0
+offset_right = 164.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("1_hgdat")
+theme_override_font_sizes/font_size = 100
+text = "S"
+
+[node name="MusicOn" type="Sprite2D" parent="."]
+position = Vector2(132, 41)
+texture = ExtResource("2_aicgo")
