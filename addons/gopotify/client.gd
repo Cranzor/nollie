@@ -68,7 +68,8 @@ func _start_auth_server() -> void:
 	add_child(self.server)
 
 func _stop_auth_server() -> void:
-	self.server.queue_free()
+	if self.server: # added a check here to avoid an error
+		self.server.queue_free()
 	self.server = null
 
 func request_new_credentials(code) -> bool:

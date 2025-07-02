@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://beirmn27iqsot"]
+
+[ext_resource type="PackedScene" uid="uid://ci6k4fyp4x80c" path="res://scenes/settings/option_text.tscn" id="1_ypkso"]
+[ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="2_5wina"]
+
+[node name="OptionInput" type="HBoxContainer"]
+
+[node name="OptionText" parent="." instance=ExtResource("1_ypkso")]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 1
+theme_override_fonts/font = ExtResource("2_5wina")
+context_menu_enabled = false
+caret_blink = true

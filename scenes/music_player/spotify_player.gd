@@ -24,8 +24,9 @@ func get_current_artist_and_track_name() -> String:
 	return await gopotify.get_current_track()
 
 func establish_spotify_connection() -> void:
-	if not gopotify.credentials:
+	if gopotify.credentials == null or gopotify.credentials.is_expired():
 		gopotify.request_user_authorization()
+		await gopotify.server.credentials_received
 
 func _emit_track_changed_signal():
 	emit_signal("current_track_changed", await get_current_artist_and_track_name())

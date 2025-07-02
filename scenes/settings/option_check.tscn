@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://1tqephidmgke"]
+
+[ext_resource type="PackedScene" uid="uid://ci6k4fyp4x80c" path="res://scenes/settings/option_text.tscn" id="1_w8y5t"]
+
+[node name="OptionCheck" type="HBoxContainer"]
+
+[node name="OptionText" parent="." instance=ExtResource("1_w8y5t")]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+focus_mode = 0
