@@ -55,12 +55,13 @@ layout_mode = 2
 alignment = 2
 
 [node name="Settings" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 0
 texture_normal = ExtResource("2_ei257")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

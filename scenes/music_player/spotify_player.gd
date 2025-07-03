@@ -4,6 +4,10 @@ extends MusicPlayer
 
 func _ready() -> void:
 	request_timer.timeout.connect(_emit_track_changed_signal)
+	GlobalSettings.spotify_client_id_changed.connect(_client_id_changed)
+	GlobalSettings.spotify_client_secret_changed.connect(_client_secret_changed)
+	GlobalSettings.spotify_port_changed.connect(_client_port_changed)
+
 
 func play() -> void:
 	gopotify.play()
@@ -30,3 +34,12 @@ func establish_spotify_connection() -> void:
 
 func _emit_track_changed_signal():
 	emit_signal("current_track_changed", await get_current_artist_and_track_name())
+
+func _client_id_changed(new_client_id):
+	gopotify.client_id = new_client_id
+
+func _client_secret_changed(new_client_secret):
+	gopotify.client_secret = new_client_secret
+
+func _client_port_changed(new_port):
+	gopotify.port = new_port

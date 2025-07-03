@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbll7jmokqctq"]
+[gd_scene load_steps=5 format=3 uid="uid://bbll7jmokqctq"]
 
+[ext_resource type="Script" uid="uid://c1fypfhhm5fbc" path="res://scenes/settings/settings.gd" id="1_tt6xx"]
 [ext_resource type="FontFile" uid="uid://ddcrrdlx8quwu" path="res://fonts/Inter/static/Inter_18pt-Bold.ttf" id="1_vu5fi"]
 [ext_resource type="PackedScene" uid="uid://beirmn27iqsot" path="res://scenes/settings/option_input.tscn" id="2_vu5fi"]
 
@@ -7,12 +8,14 @@
 bg_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
 
 [node name="Settings" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tt6xx")
 
 [node name="Window" type="Window" parent="."]
 title = "Settings"
@@ -37,26 +40,31 @@ tab_focus_mode = 0
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="OptionInput" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
+[node name="ClientID" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
+is_secret = true
+setting_name = "spotify_client_id"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/OptionInput" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/ClientID" index="0"]
 text = "Client ID:"
 
-[node name="OptionInput2" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
+[node name="ClientSecret" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
+is_secret = true
+setting_name = "spotify_client_secret"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/OptionInput2" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/ClientSecret" index="0"]
 text = "Client Secret:"
 
-[node name="OptionInput3" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
+[node name="Port" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
 default_value = "8889"
+setting_name = "spotify_port"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/OptionInput3" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/Port" index="0"]
 text = "Port:"
 
-[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Spotify/OptionInput3" index="1"]
+[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Spotify/Port" index="1"]
 custom_minimum_size = Vector2(50, 0)
 
 [node name="Sound" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
@@ -64,24 +72,30 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="OptionInput" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
+[node name="InGameVolume" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
 default_value = "85"
+int_only_input = true
+max_value = 100
+setting_name = "in_game_volume"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Sound/OptionInput" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Sound/InGameVolume" index="0"]
 text = "In-game volume:"
 
-[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Sound/OptionInput" index="1"]
+[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Sound/InGameVolume" index="1"]
 custom_minimum_size = Vector2(35, 0)
 
-[node name="OptionInput2" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
+[node name="PauseVolume" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
 default_value = "65"
+int_only_input = true
+max_value = 100
+setting_name = "pause_volume"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Sound/OptionInput2" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Sound/PauseVolume" index="0"]
 text = "Pause volume:"
 
-[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Sound/OptionInput2" index="1"]
+[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Sound/PauseVolume" index="1"]
 custom_minimum_size = Vector2(35, 0)
 
 [node name="Controls" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
@@ -94,8 +108,10 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[editable path="Window/PanelContainer/TabContainer/Spotify/OptionInput"]
-[editable path="Window/PanelContainer/TabContainer/Spotify/OptionInput2"]
-[editable path="Window/PanelContainer/TabContainer/Spotify/OptionInput3"]
-[editable path="Window/PanelContainer/TabContainer/Sound/OptionInput"]
-[editable path="Window/PanelContainer/TabContainer/Sound/OptionInput2"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+
+[editable path="Window/PanelContainer/TabContainer/Spotify/ClientID"]
+[editable path="Window/PanelContainer/TabContainer/Spotify/ClientSecret"]
+[editable path="Window/PanelContainer/TabContainer/Spotify/Port"]
+[editable path="Window/PanelContainer/TabContainer/Sound/InGameVolume"]
+[editable path="Window/PanelContainer/TabContainer/Sound/PauseVolume"]

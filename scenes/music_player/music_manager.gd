@@ -27,9 +27,9 @@ func _on_game_state_tracker_pause_status_changed(paused_status: Variant) -> void
 	#else:
 		#music_player.set_volume(30)
 	if paused_status:
-		music_player.set_volume(65)
+		music_player.set_volume(GlobalSettings.pause_volume)
 	else:
-		music_player.set_volume(85)
+		music_player.set_volume(GlobalSettings.in_game_volume)
 
 func handle_spotify_toggle(on: bool):
 	if on:

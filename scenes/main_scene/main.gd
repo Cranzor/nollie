@@ -12,6 +12,7 @@ func _ready() -> void:
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
 	spotify_toggle.toggled.connect(_spotify_toggle)
+	load_saved_settings()
 
 
 func _main_menu_button_clicked() -> void:
@@ -29,3 +30,14 @@ func _music_folder_dir_selected(dir: String) -> void:
 func _spotify_toggle(on: bool) -> void:
 	music_manager.handle_spotify_toggle(on)
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
+
+func load_saved_settings():
+	var settings_cfg = ConfigFile.new()
+	var err = settings_cfg.load(GlobalSettings.settings_cfg_path)
+	if err != OK:
+		return
+	var sections = settings_cfg.get_sections()
+	for section in sections:
+		var section_keys = settings_cfg.get_section_keys(section)
+		for key in section_keys:
+			GlobalSettings.set(key, settings_cfg.get_value(section, key))
