@@ -22,6 +22,7 @@ func play() -> void:
 		audio_stream_player.stream = AudioStreamMP3.load_from_file(file_path)
 	audio_stream_player.play()
 	emit_signal("current_track_changed", get_current_artist_and_track_name())
+	set_volume(GlobalSettings.in_game_volume)
 
 
 func stop() -> void:

@@ -12,6 +12,7 @@ extends HBoxContainer
 
 func _ready() -> void:
 	line_edit.connect("text_submitted", _text_changed)
+	line_edit.connect("focus_exited", _text_edit_focus_exited)
 	line_edit.connect("editing_toggled", _line_edit_editing_toggled)
 	reset_settings.connect("pressed", _reset_settings_clicked)
 	set_text_field_to_global_setting()
@@ -32,6 +33,8 @@ func _text_changed(new_text: String):
 	if is_secret:
 		line_edit.secret = true
 
+func _text_edit_focus_exited() -> void:
+	_text_changed(line_edit.text)
 
 func display_reset_settings(new_text) -> void:
 	if new_text != default_value:

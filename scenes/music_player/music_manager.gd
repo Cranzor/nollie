@@ -8,6 +8,7 @@ var using_spotify: bool = false
 @onready var game_state_tracker = $GameStateTracker
 
 func _ready() -> void:
+	AudioServer.set_bus_volume_db(0, -12.0)
 	if using_spotify:
 		music_player = spotify_player
 	else:

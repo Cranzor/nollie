@@ -17,7 +17,6 @@ func _ready() -> void:
 
 func _main_menu_button_clicked() -> void:
 	music_manager.music_player.play()
-	music_manager.music_player.set_volume(50)
 
 func _current_track_changed(track_name: String) -> void:
 	song_display.update_song_title_labels(track_name)
