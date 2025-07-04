@@ -1,5 +1,5 @@
 extends MusicPlayer
-@onready var audio_stream_player = $AudioStreamPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 var music_directory: String = "res://test_music/"
 var playlist: Array[String]
 var current_track_index: int = 0:
@@ -14,6 +14,11 @@ var current_track_index: int = 0:
 
 
 func play() -> void:
+	emit_signal("current_track_changed", get_current_artist_and_track_name())
+	set_volume(GlobalSettings.in_game_volume)
+	if audio_stream_player.stream_paused:
+		audio_stream_player.set_stream_paused(false)
+		return
 	var file_path = get_full_file_path_from_track_name(playlist[current_track_index])
 	print(file_path)
 	if file_path.get_extension() == "wav":
@@ -21,8 +26,14 @@ func play() -> void:
 	elif file_path.get_extension() == "mp3":
 		audio_stream_player.stream = AudioStreamMP3.load_from_file(file_path)
 	audio_stream_player.play()
-	emit_signal("current_track_changed", get_current_artist_and_track_name())
-	set_volume(GlobalSettings.in_game_volume)
+	#emit_signal("current_track_changed", get_current_artist_and_track_name())
+	#set_volume(GlobalSettings.in_game_volume)
+
+
+func pause() -> void:
+	if !audio_stream_player.stream_paused:
+		audio_stream_player.set_stream_paused(true)
+	
 
 
 func stop() -> void:

@@ -18,6 +18,12 @@ func play() -> void:
 	request_timer.start()
 	track_monitor.start()
 	
+
+func pause() -> void:
+	gopotify.pause()
+	track_monitor.stop()
+
+
 func next_track() -> void:
 	gopotify.next()
 	request_timer.start()

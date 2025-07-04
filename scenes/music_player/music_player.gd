@@ -7,6 +7,10 @@ func play() -> void:
 	pass
 
 
+func pause() -> void:
+	pass
+
+
 func next_track() -> void:
 	pass
 

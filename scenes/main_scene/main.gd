@@ -8,15 +8,18 @@ extends Node
 @onready var spotify_toggle = $MainMenu/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/SpotifyToggle
 
 func _ready() -> void:
-	play_button.button_down.connect(_main_menu_button_clicked)
+	play_button.toggled.connect(_main_menu_button_clicked)
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
 	spotify_toggle.toggled.connect(_spotify_toggle)
 	load_saved_settings()
 
 
-func _main_menu_button_clicked() -> void:
-	music_manager.music_player.play()
+func _main_menu_button_clicked(toggled_on: bool) -> void:
+	if toggled_on:
+		music_manager.music_player.play()
+	else:
+		music_manager.music_player.pause()
 
 func _current_track_changed(track_name: String) -> void:
 	song_display.update_song_title_labels(track_name)
@@ -29,6 +32,7 @@ func _music_folder_dir_selected(dir: String) -> void:
 func _spotify_toggle(on: bool) -> void:
 	music_manager.handle_spotify_toggle(on)
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
+	play_button.button_pressed = false
 
 func load_saved_settings():
 	var settings_cfg = ConfigFile.new()
