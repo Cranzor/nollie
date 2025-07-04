@@ -260,7 +260,9 @@ func get_queue() -> Array[GopotifyTrack]:
 func get_current_track():
 	var response = await (self._spotify_request("me/player/currently-playing", HTTPClient.METHOD_GET))
 	var parsed_json = JSON.parse_string(response.body.get_string_from_utf8())
+	var progress_ms = parsed_json["progress_ms"]
 	var item = parsed_json["item"]
+	var duration_ms = item["duration_ms"]
 	var track_name = item["name"]
 	var track_artists: Array
 	var artist_info: Array = item["artists"]
@@ -269,4 +271,4 @@ func get_current_track():
 		track_artists.append(artist_name)
 	var artists_result: String = ", ".join(track_artists)
 	var artist_with_song = artists_result + " - " + track_name
-	return artist_with_song
+	return [artist_with_song, progress_ms, duration_ms]
