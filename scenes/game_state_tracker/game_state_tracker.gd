@@ -30,7 +30,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_a_button_timer_timeout() -> void:
 	paused = false
-	print("in game")
 
 func check_input_held(input_name, timer):
 	if Input.is_action_pressed(input_name):
@@ -42,7 +41,6 @@ func check_input_held(input_name, timer):
 
 func _on_left_right_timer_timeout() -> void:
 	paused = false
-	print("in game")
 
 func check_paused():
 	if Input.is_action_just_released("pause"):

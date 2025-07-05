@@ -38,4 +38,5 @@ func handle_spotify_toggle(on: bool):
 		music_player = spotify_player
 		music_player.establish_spotify_connection()
 	else:
+		music_player.stop_timers()
 		music_player = local_player

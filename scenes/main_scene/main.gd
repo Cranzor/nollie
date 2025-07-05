@@ -33,6 +33,11 @@ func _spotify_toggle(on: bool) -> void:
 	music_manager.handle_spotify_toggle(on)
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
 	play_button.button_pressed = false
+	if on:
+		music_manager.music_player.gopotify_lost_connection.connect(_handle_lost_gopotify_connection)
+
+func _handle_lost_gopotify_connection() -> void:
+	spotify_toggle.button_pressed = false
 
 func load_saved_settings():
 	var settings_cfg = ConfigFile.new()
