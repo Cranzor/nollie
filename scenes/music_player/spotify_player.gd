@@ -5,6 +5,7 @@ extends MusicPlayer
 @onready var track_monitor = $TrackMonitor
 
 signal gopotify_lost_connection
+signal song_already_playing
 var lost_connection: bool
 
 func _ready() -> void:
@@ -20,7 +21,6 @@ func _ready() -> void:
 func play() -> void:
 	gopotify.play()
 	request_timer.start()
-	track_monitor.start()
 	
 
 func pause() -> void:
@@ -43,12 +43,15 @@ func establish_spotify_connection() -> void:
 	if gopotify.credentials == null or gopotify.credentials.is_expired():
 		gopotify.request_user_authorization()
 		await gopotify.server.credentials_received
+	request_timer.start()
 
 func _emit_track_changed_signal():
 	var current_track_info = await gopotify.get_current_track()
-	if current_track_info != null:
+	var is_playing = current_track_info[3]
+	if current_track_info != null and is_playing:
 		emit_signal("current_track_changed", current_track_info[0])
 		update_track_progress_timer(current_track_info)
+	track_monitor.start()
 
 func _track_monitor_timeout() -> void:
 	var current_track_info = await gopotify.get_current_track()

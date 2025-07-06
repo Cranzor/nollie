@@ -267,6 +267,7 @@ func get_current_track():
 		var parsed_json = JSON.parse_string(response.body.get_string_from_utf8())
 		if parsed_json != null:
 			var progress_ms = parsed_json["progress_ms"]
+			var is_playing = parsed_json["is_playing"]
 			var item = parsed_json["item"]
 			var duration_ms = item["duration_ms"]
 			var track_name = item["name"]
@@ -277,5 +278,5 @@ func get_current_track():
 				track_artists.append(artist_name)
 			var artists_result: String = ", ".join(track_artists)
 			var artist_with_song = artists_result + " - " + track_name
-			return [artist_with_song, progress_ms, duration_ms]
+			return [artist_with_song, progress_ms, duration_ms, is_playing]
 	return null

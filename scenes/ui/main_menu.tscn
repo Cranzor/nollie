@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://butslodhti3t2"]
+[gd_scene load_steps=13 format=3 uid="uid://butslodhti3t2"]
 
 [ext_resource type="Script" uid="uid://08uvs7fh7c86" path="res://scenes/ui/main_menu.gd" id="1_0dkrt"]
 [ext_resource type="Texture2D" uid="uid://c5wotinim0tl1" path="res://icons/skip_previous.svg" id="2_8uxxo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://t6dgwb67jqns" path="res://icons/play_circle.svg" id="2_wk0pr"]
 [ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="3_p8ri8"]
 [ext_resource type="Texture2D" uid="uid://c7yb0d1b1m7ww" path="res://icons/folder.svg" id="3_wk0pr"]
+[ext_resource type="PackedScene" uid="uid://cyw3lpkbf4nx2" path="res://scenes/ui/interface_texture_button.tscn" id="4_btxxm"]
 [ext_resource type="Texture2D" uid="uid://c5to1d2lkp27b" path="res://icons/skip_next.svg" id="4_ei257"]
 [ext_resource type="Texture2D" uid="uid://c48ygitus4l1n" path="res://icons/pause.svg" id="5_wb0q5"]
 
@@ -69,34 +70,33 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="TextureButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="PreviousSong" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_btxxm")]
+unique_name_in_owner = true
 layout_mode = 2
+disabled = true
 texture_normal = ExtResource("2_8uxxo")
 
-[node name="PlayButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="PlayButton" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_btxxm")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-focus_mode = 0
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource("2_wk0pr")
 texture_pressed = ExtResource("5_wb0q5")
-ignore_texture_size = true
-stretch_mode = 5
 
-[node name="TextureButton2" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="NextSong" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_btxxm")]
+unique_name_in_owner = true
 layout_mode = 2
+disabled = true
 texture_normal = ExtResource("4_ei257")
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.168627)
 layout_mode = 2
 
-[node name="FolderButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="FolderButton" parent="PanelContainer/VBoxContainer" instance=ExtResource("4_btxxm")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 focus_mode = 0
 texture_normal = ExtResource("3_wk0pr")
 
@@ -149,6 +149,3 @@ theme_override_font_sizes/font_size = 12
 text = "Open the settings and enter your Spotify client ID and secret."
 horizontal_alignment = 1
 autowrap_mode = 2
-
-[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_mouse_entered"]
-[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_mouse_exited"]

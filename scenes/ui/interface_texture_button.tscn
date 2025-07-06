@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyw3lpkbf4nx2"]
+
+[ext_resource type="Script" uid="uid://c5ne70m1iyhsg" path="res://scenes/ui/interface_texture_button.gd" id="1_s3bq7"]
+
+[node name="InterfaceTextureButton" type="TextureButton"]
+custom_minimum_size = Vector2(50, 50)
+focus_mode = 0
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_s3bq7")

@@ -22,10 +22,13 @@ func _main_menu_button_clicked(toggled_on: bool) -> void:
 		music_manager.music_player.pause()
 
 func _current_track_changed(track_name: String) -> void:
+	if play_button.button_pressed == false:
+		play_button.button_pressed = true
 	song_display.update_song_title_labels(track_name)
 	song_display.animation_appear()
 
 func _music_folder_dir_selected(dir: String) -> void:
+	main_menu.enable_playback_buttons(true)
 	music_manager.music_player.music_directory = dir
 	music_manager.music_player.initial_setup()
 
@@ -35,6 +38,10 @@ func _spotify_toggle(on: bool) -> void:
 	play_button.button_pressed = false
 	if on:
 		music_manager.music_player.gopotify_lost_connection.connect(_handle_lost_gopotify_connection)
+		main_menu.enable_playback_buttons(true)
+	else:
+		if !music_manager.music_player.music_directory:
+			main_menu.enable_playback_buttons(false)
 
 func _handle_lost_gopotify_connection() -> void:
 	spotify_toggle.button_pressed = false

@@ -4,6 +4,8 @@ extends Control
 @onready var folder_button = %FolderButton
 @onready var music_folder_dialog: FileDialog = %MusicFolderDialog
 @onready var settings = %Settings
+@onready var previous_song = %PreviousSong
+@onready var next_song = %NextSong
 var settings_window: Control
 
 @onready var spotify_check_button = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/SpotifyToggle
@@ -18,6 +20,15 @@ func _ready() -> void:
 	#---
 	spotify_check_button.mouse_entered.connect(_show_spotify_setup_message)
 	spotify_check_button.mouse_exited.connect(_hide_spotify_setup_message)
+
+func enable_playback_buttons(enable: bool):
+	var playback_buttons = [previous_song, play_button, next_song]
+	for button in playback_buttons:
+		if enable:
+			button.disabled = false
+			button.reset_button_color()
+		else:
+			button.disabled = true
 
 func _on_play_button_mouse_entered() -> void:
 	play_button.self_modulate = Color(0.805, 0.805, 0.805)

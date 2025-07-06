@@ -1,6 +1,6 @@
 extends MusicPlayer
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-var music_directory: String = "res://test_music/"
+var music_directory: String
 var playlist: Array[String]
 var current_track_index: int = 0:
 	get:
