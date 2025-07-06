@@ -46,8 +46,10 @@ func establish_spotify_connection() -> void:
 	request_timer.start()
 
 func _emit_track_changed_signal():
+	var is_playing: bool
 	var current_track_info = await gopotify.get_current_track()
-	var is_playing = current_track_info[3]
+	if current_track_info != null:
+		is_playing = current_track_info[3]
 	if current_track_info != null and is_playing:
 		emit_signal("current_track_changed", current_track_info[0])
 		update_track_progress_timer(current_track_info)

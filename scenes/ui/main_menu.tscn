@@ -97,7 +97,6 @@ layout_mode = 2
 [node name="FolderButton" parent="PanelContainer/VBoxContainer" instance=ExtResource("4_btxxm")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
 texture_normal = ExtResource("3_wk0pr")
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]

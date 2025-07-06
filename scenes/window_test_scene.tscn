@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cux44wkpu3t35"]
+
+[ext_resource type="PackedScene" uid="uid://cubimvb7ees1l" path="res://scenes/ui/song_display.tscn" id="1_31xq7"]
+[ext_resource type="Script" uid="uid://xnix6wp8w8nw" path="res://window_canvas.gd" id="1_uujhn"]
+
+[node name="WindowTestScene" type="Node2D"]
+
+[node name="Window" type="Window" parent="."]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(1, 1)
+borderless = true
+always_on_top = true
+transparent = true
+unfocusable = true
+content_scale_size = Vector2i(2560, 1440)
+content_scale_mode = 1
+content_scale_aspect = 4
+
+[node name="Node2D" type="Node2D" parent="Window"]
+script = ExtResource("1_uujhn")
+
+[node name="SongDisplay" parent="Window" instance=ExtResource("1_31xq7")]
