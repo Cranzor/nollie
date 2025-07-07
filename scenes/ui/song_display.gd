@@ -6,13 +6,14 @@ extends Control
 @onready var scroll_container: ScrollContainer = $MarginContainer/PanelContainer/HBoxContainer/ScrollContainer
 @onready var animation_timer: Timer = $AnimationTimer
 var default_position: Vector2
-var max_length: int = 745
+var max_length: int = 750
 var off_screen_pos: Vector2
 var position_tween: Tween
+var padding: Vector2 = Vector2(1, 0) # for 1 pixel gap on the right side of song display
 
 var prev_position
 func _ready() -> void:
-	default_position = position
+	default_position = position + padding
 	off_screen_pos.y = default_position.y
 	off_screen_pos.x = default_position.x + max_length
 	position = off_screen_pos

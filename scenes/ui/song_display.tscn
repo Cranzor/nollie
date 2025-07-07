@@ -58,10 +58,10 @@ expand_mode = 1
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_0nvam")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(450, 0)
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 size_flags_vertical = 4
 horizontal_scroll_mode = 3
@@ -71,7 +71,7 @@ vertical_scroll_mode = 0
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_0nvam")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "The Heelflips - Fakie Rollaway (Live Version)"
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
@@ -94,7 +94,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.670588, 0.694118, 0.713726, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_0nvam")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "Skip"
 
 [node name="AnimationTimer" type="Timer" parent="."]
