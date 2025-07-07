@@ -46,9 +46,10 @@ func next_track() -> void:
 
 
 func previous_track() -> void:
-	if current_track_index != 0:
-		current_track_index -= 1
-		play()
+	if GlobalSettings.previous_song_control_enabled:
+		if current_track_index != 0:
+			current_track_index -= 1
+			play()
 
 
 func set_volume(volume: int) -> void:

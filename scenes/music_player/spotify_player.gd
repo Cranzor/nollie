@@ -21,6 +21,8 @@ func _ready() -> void:
 func play() -> void:
 	gopotify.play()
 	request_timer.start()
+	await get_tree().create_timer(2).timeout
+	set_volume(GlobalSettings.in_game_volume)
 	
 
 func pause() -> void:
@@ -33,8 +35,9 @@ func next_track() -> void:
 	request_timer.start()
 
 func previous_track() -> void:
-	gopotify.previous()
-	request_timer.start()
+	if GlobalSettings.previous_song_control_enabled:
+		gopotify.previous()
+		request_timer.start()
 
 func set_volume(volume: int) -> void:
 	gopotify.set_volume(volume)

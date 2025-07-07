@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c3scgr4a4v3uw" path="res://scenes/settings/option_input.gd" id="1_8isno"]
 [ext_resource type="PackedScene" uid="uid://ci6k4fyp4x80c" path="res://scenes/settings/option_text.tscn" id="1_ypkso"]
 [ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="2_5wina"]
-[ext_resource type="Texture2D" uid="uid://db1ifjt0kwum0" path="res://icons/reset_settings.svg" id="4_5aufs"]
+[ext_resource type="PackedScene" uid="uid://clsao3hwyecmx" path="res://scenes/settings/reset_settings.tscn" id="4_5aufs"]
 
 [node name="OptionInput" type="HBoxContainer"]
 script = ExtResource("1_8isno")
@@ -19,10 +19,5 @@ theme_override_fonts/font = ExtResource("2_5wina")
 context_menu_enabled = false
 caret_blink = true
 
-[node name="ResetSettings" type="TextureButton" parent="."]
-visible = false
-custom_minimum_size = Vector2(24, 24)
+[node name="ResetSettings" parent="." instance=ExtResource("4_5aufs")]
 layout_mode = 2
-texture_normal = ExtResource("4_5aufs")
-ignore_texture_size = true
-stretch_mode = 4

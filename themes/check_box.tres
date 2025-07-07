@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cv8yqgfvys7hm"]
+
+[ext_resource type="Texture2D" uid="uid://txngfiwfwhdf" path="res://icons/option_unchecked.png" id="1_1hoqd"]
+[ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="2_igdqf"]
+
+[resource]
+CheckBox/icons/unchecked = ExtResource("1_1hoqd")
+TabBar/fonts/font = ExtResource("2_igdqf")

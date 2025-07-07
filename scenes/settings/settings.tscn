@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbll7jmokqctq"]
+[gd_scene load_steps=6 format=3 uid="uid://bbll7jmokqctq"]
 
 [ext_resource type="Script" uid="uid://c1fypfhhm5fbc" path="res://scenes/settings/settings.gd" id="1_tt6xx"]
 [ext_resource type="FontFile" uid="uid://ddcrrdlx8quwu" path="res://fonts/Inter/static/Inter_18pt-Bold.ttf" id="1_vu5fi"]
 [ext_resource type="PackedScene" uid="uid://beirmn27iqsot" path="res://scenes/settings/option_input.tscn" id="2_vu5fi"]
+[ext_resource type="PackedScene" uid="uid://1tqephidmgke" path="res://scenes/settings/option_check.tscn" id="4_1slea"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36l1p"]
 bg_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
@@ -58,7 +59,6 @@ text = "Client Secret:"
 
 [node name="Port" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
-default_value = "8889"
 setting_name = "spotify_port"
 
 [node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/Port" index="0"]
@@ -74,7 +74,6 @@ metadata/_tab_index = 1
 
 [node name="InGameVolume" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
-default_value = "85"
 int_only_input = true
 max_value = 100
 setting_name = "in_game_volume"
@@ -87,7 +86,6 @@ custom_minimum_size = Vector2(35, 0)
 
 [node name="PauseVolume" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
-default_value = "65"
 int_only_input = true
 max_value = 100
 setting_name = "pause_volume"
@@ -103,6 +101,13 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
+[node name="PreviousSongControl" parent="Window/PanelContainer/TabContainer/Controls" instance=ExtResource("4_1slea")]
+layout_mode = 2
+setting_name = "previous_song_control_enabled"
+
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Controls/PreviousSongControl" index="0"]
+text = "Use left stick press (L3) to play previous song:"
+
 [node name="Themes" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
 visible = false
 layout_mode = 2
@@ -115,3 +120,4 @@ metadata/_tab_index = 3
 [editable path="Window/PanelContainer/TabContainer/Spotify/Port"]
 [editable path="Window/PanelContainer/TabContainer/Sound/InGameVolume"]
 [editable path="Window/PanelContainer/TabContainer/Sound/PauseVolume"]
+[editable path="Window/PanelContainer/TabContainer/Controls/PreviousSongControl"]

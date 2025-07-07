@@ -1,11 +1,8 @@
-extends HBoxContainer
+extends Option
 
 @export var default_value: String
 @export var int_only_input: bool
 @export var is_secret: bool
-@export var max_value: int
-@export var min_value: int
-@export_enum("in_game_volume", "pause_volume", "spotify_client_id", "spotify_client_secret", "spotify_port") var setting_name: String
 
 @onready var line_edit = $LineEdit
 @onready var reset_settings = $ResetSettings
@@ -58,8 +55,6 @@ func clamp_int_value(int_value: String):
 	var clamped_int = clampi(int(int_value), min_value, max_value)
 	return str(clamped_int)
 
-func update_global_setting(setting, value):
-	GlobalSettings.set(setting, value)
 
 func set_text_field_to_global_setting() -> void:
 	var global_setting = str(GlobalSettings.get(setting_name))

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://1tqephidmgke"]
+[gd_scene load_steps=5 format=3 uid="uid://1tqephidmgke"]
 
 [ext_resource type="Script" uid="uid://vabsxx8hnqje" path="res://scenes/settings/option_check.gd" id="1_0ypnx"]
 [ext_resource type="PackedScene" uid="uid://ci6k4fyp4x80c" path="res://scenes/settings/option_text.tscn" id="1_w8y5t"]
+[ext_resource type="Theme" uid="uid://cv8yqgfvys7hm" path="res://themes/check_box.tres" id="3_i4mpd"]
+[ext_resource type="PackedScene" uid="uid://clsao3hwyecmx" path="res://scenes/settings/reset_settings.tscn" id="4_261fe"]
 
 [node name="OptionCheck" type="HBoxContainer"]
 script = ExtResource("1_0ypnx")
@@ -12,3 +14,7 @@ layout_mode = 2
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 2
 focus_mode = 0
+theme = ExtResource("3_i4mpd")
+
+[node name="ResetSettings" parent="." instance=ExtResource("4_261fe")]
+layout_mode = 2

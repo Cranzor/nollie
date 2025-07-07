@@ -22,3 +22,6 @@ var spotify_port: String = "8889":
 signal spotify_client_id_changed(new_client_id)
 signal spotify_client_secret_changed(new_client_secret)
 signal spotify_port_changed(new_port)
+
+# controls
+var previous_song_control_enabled: bool = false
