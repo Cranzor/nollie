@@ -60,8 +60,6 @@ func _settings_button_pressed() -> void:
 		add_child(settings_window_node)
 
 func check_spotify_settings() -> void:
-	print(GlobalSettings.spotify_client_id)
-	print(GlobalSettings.spotify_client_secret)
 	if GlobalSettings.spotify_client_id == "" or GlobalSettings.spotify_client_secret == "":
 		spotify_check_button.disabled = true
 	else:

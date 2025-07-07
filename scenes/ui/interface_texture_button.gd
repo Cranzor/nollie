@@ -6,7 +6,6 @@ func _ready() -> void:
 	
 	self.connect("mouse_entered", _self_mouse_entered)
 	self.connect("mouse_exited", _self_mouse_exited)
-	self.connect("pressed", _test)
 
 func _self_mouse_entered() -> void:
 	darken_button_color()
@@ -20,6 +19,3 @@ func darken_button_color() -> void:
 
 func reset_button_color() -> void:
 	self_modulate = Color(1.0, 1.0, 1.0)
-
-func _test() -> void:
-	print("clicked")

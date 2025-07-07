@@ -111,10 +111,23 @@ setting_name = "previous_song_control_enabled"
 [node name="OptionText" parent="Window/PanelContainer/TabContainer/Controls/PreviousSongControl/MarginContainer" index="0"]
 text = "Left stick press (L3) to play previous song:"
 
-[node name="Themes" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
+[node name="Display" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="OptionInput" parent="Window/PanelContainer/TabContainer/Display" instance=ExtResource("2_vu5fi")]
+layout_mode = 2
+default_value = "10"
+int_only_input = true
+max_value = 10000
+setting_name = "song_display_pixel_offset_from_bottom"
+
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Display/OptionInput/MarginContainer" index="0"]
+text = "Song display offset from bottom of screen (in pixels): "
+
+[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Display/OptionInput" index="1"]
+custom_minimum_size = Vector2(50, 0)
 
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
 
@@ -124,3 +137,4 @@ metadata/_tab_index = 3
 [editable path="Window/PanelContainer/TabContainer/Sound/InGameVolume"]
 [editable path="Window/PanelContainer/TabContainer/Sound/PauseVolume"]
 [editable path="Window/PanelContainer/TabContainer/Controls/PreviousSongControl"]
+[editable path="Window/PanelContainer/TabContainer/Display/OptionInput"]

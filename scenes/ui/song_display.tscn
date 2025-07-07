@@ -64,10 +64,15 @@ theme_override_font_sizes/font_size = 35
 custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 size_flags_vertical = 4
+scroll_horizontal = 56
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="SongTitle2" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+
+[node name="SongTitle2" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_0nvam")
@@ -99,4 +104,8 @@ text = "Skip"
 
 [node name="AnimationTimer" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
+
+[node name="ScrollStart" type="Timer" parent="."]
+wait_time = 1.2
 one_shot = true

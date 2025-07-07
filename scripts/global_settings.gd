@@ -22,6 +22,13 @@ var spotify_port: String = "8889":
 signal spotify_client_id_changed(new_client_id)
 signal spotify_client_secret_changed(new_client_secret)
 signal spotify_port_changed(new_port)
+signal song_display_offset_changed(new_pixel_offset: int)
 
 # controls
 var previous_song_control_enabled: bool = false
+
+# display
+var song_display_pixel_offset_from_bottom: int = 10:
+	set(value):
+		song_display_pixel_offset_from_bottom = value
+		emit_signal("song_display_offset_changed", value)
