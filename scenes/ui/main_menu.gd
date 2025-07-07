@@ -12,14 +12,16 @@ var settings_window: Control
 @onready var spotify_setup_message = $SpotifySetupMessage
 @onready var spotify_setup_message_container = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer
 
-
 func _ready() -> void:
-	folder_button.button_down.connect(_folder_button_pressed)
+	folder_button.pressed.connect(_folder_button_pressed)
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
 	settings.button_down.connect(_settings_button_pressed)
 	#---
 	spotify_check_button.mouse_entered.connect(_show_spotify_setup_message)
 	spotify_check_button.mouse_exited.connect(_hide_spotify_setup_message)
+	check_spotify_settings()
+	GlobalSettings.spotify_client_id_changed.connect(_spotify_value_changed)
+	GlobalSettings.spotify_client_secret_changed.connect(_spotify_value_changed)
 
 func enable_playback_buttons(enable: bool):
 	var playback_buttons = [previous_song, play_button, next_song]
@@ -46,7 +48,7 @@ func _music_folder_dir_selected(dir: String) -> void:
 func _show_spotify_setup_message():
 	if spotify_check_button.disabled:
 		if !spotify_setup_message.visible:
-			spotify_setup_message.position = get_local_mouse_position()
+			spotify_setup_message.position = get_local_mouse_position() - Vector2(100, 0)
 		spotify_setup_message.show()
 
 func _hide_spotify_setup_message():
@@ -56,3 +58,14 @@ func _settings_button_pressed() -> void:
 	if !is_instance_valid(settings_window):
 		var settings_window_node = preload("res://scenes/settings/settings.tscn").instantiate()
 		add_child(settings_window_node)
+
+func check_spotify_settings() -> void:
+	print(GlobalSettings.spotify_client_id)
+	print(GlobalSettings.spotify_client_secret)
+	if GlobalSettings.spotify_client_id == "" or GlobalSettings.spotify_client_secret == "":
+		spotify_check_button.disabled = true
+	else:
+		spotify_check_button.disabled = false
+
+func _spotify_value_changed(value: String) -> void:
+	check_spotify_settings()

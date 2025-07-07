@@ -26,9 +26,9 @@ GlobalSettings="*res://scripts/global_settings.gd"
 [display]
 
 window/size/viewport_width=400
-window/size/viewport_height=400
+window/size/viewport_height=250
+window/size/resizable=false
 window/subwindows/embed_subwindows=false
-window/stretch/aspect="expand"
 window/per_pixel_transparency/allowed=true
 
 [dotnet]

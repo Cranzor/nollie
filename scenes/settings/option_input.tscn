@@ -6,9 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://clsao3hwyecmx" path="res://scenes/settings/reset_settings.tscn" id="4_5aufs"]
 
 [node name="OptionInput" type="HBoxContainer"]
+offset_right = 200.0
+offset_bottom = 28.0
 script = ExtResource("1_8isno")
 
-[node name="OptionText" parent="." instance=ExtResource("1_ypkso")]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+
+[node name="OptionText" parent="MarginContainer" instance=ExtResource("1_ypkso")]
 layout_mode = 2
 
 [node name="LineEdit" type="LineEdit" parent="."]

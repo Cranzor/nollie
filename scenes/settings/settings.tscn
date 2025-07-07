@@ -46,7 +46,7 @@ layout_mode = 2
 is_secret = true
 setting_name = "spotify_client_id"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/ClientID" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/ClientID/MarginContainer" index="0"]
 text = "Client ID:"
 
 [node name="ClientSecret" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
@@ -54,14 +54,15 @@ layout_mode = 2
 is_secret = true
 setting_name = "spotify_client_secret"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/ClientSecret" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/ClientSecret/MarginContainer" index="0"]
 text = "Client Secret:"
 
 [node name="Port" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
+default_value = "8889"
 setting_name = "spotify_port"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/Port" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/Port/MarginContainer" index="0"]
 text = "Port:"
 
 [node name="LineEdit" parent="Window/PanelContainer/TabContainer/Spotify/Port" index="1"]
@@ -74,11 +75,12 @@ metadata/_tab_index = 1
 
 [node name="InGameVolume" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
+default_value = "85"
 int_only_input = true
 max_value = 100
 setting_name = "in_game_volume"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Sound/InGameVolume" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Sound/InGameVolume/MarginContainer" index="0"]
 text = "In-game volume:"
 
 [node name="LineEdit" parent="Window/PanelContainer/TabContainer/Sound/InGameVolume" index="1"]
@@ -86,11 +88,12 @@ custom_minimum_size = Vector2(35, 0)
 
 [node name="PauseVolume" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
+default_value = "65"
 int_only_input = true
 max_value = 100
 setting_name = "pause_volume"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Sound/PauseVolume" index="0"]
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Sound/PauseVolume/MarginContainer" index="0"]
 text = "Pause volume:"
 
 [node name="LineEdit" parent="Window/PanelContainer/TabContainer/Sound/PauseVolume" index="1"]
@@ -105,8 +108,8 @@ metadata/_tab_index = 2
 layout_mode = 2
 setting_name = "previous_song_control_enabled"
 
-[node name="OptionText" parent="Window/PanelContainer/TabContainer/Controls/PreviousSongControl" index="0"]
-text = "Use left stick press (L3) to play previous song:"
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Controls/PreviousSongControl/MarginContainer" index="0"]
+text = "Left stick press (L3) to play previous song:"
 
 [node name="Themes" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
 visible = false

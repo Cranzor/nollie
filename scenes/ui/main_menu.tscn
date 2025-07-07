@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://butslodhti3t2"]
+[gd_scene load_steps=15 format=3 uid="uid://butslodhti3t2"]
 
 [ext_resource type="Script" uid="uid://08uvs7fh7c86" path="res://scenes/ui/main_menu.gd" id="1_0dkrt"]
 [ext_resource type="Texture2D" uid="uid://c5wotinim0tl1" path="res://icons/skip_previous.svg" id="2_8uxxo"]
 [ext_resource type="Texture2D" uid="uid://co8tby0qiyoda" path="res://icons/settings.svg" id="2_ei257"]
 [ext_resource type="Texture2D" uid="uid://t6dgwb67jqns" path="res://icons/play_circle.svg" id="2_wk0pr"]
+[ext_resource type="Script" uid="uid://c5ne70m1iyhsg" path="res://scenes/ui/interface_texture_button.gd" id="3_8g5eo"]
 [ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="3_p8ri8"]
 [ext_resource type="Texture2D" uid="uid://c7yb0d1b1m7ww" path="res://icons/folder.svg" id="3_wk0pr"]
 [ext_resource type="PackedScene" uid="uid://cyw3lpkbf4nx2" path="res://scenes/ui/interface_texture_button.tscn" id="4_btxxm"]
@@ -12,6 +13,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
 bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g5eo"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubpvv"]
 bg_color = Color(0.117647, 0.843137, 0.376471, 1)
@@ -65,6 +77,7 @@ focus_mode = 0
 texture_normal = ExtResource("2_ei257")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("3_8g5eo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -94,8 +107,35 @@ texture_normal = ExtResource("4_ei257")
 modulate = Color(1, 1, 1, 0.168627)
 layout_mode = 2
 
-[node name="FolderButton" parent="PanelContainer/VBoxContainer" instance=ExtResource("4_btxxm")]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_8g5eo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_p8ri8")
+text = "Choose a local folder"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 5
+
+[node name="FolderButton" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer2/HBoxContainer/MarginContainer2" instance=ExtResource("4_btxxm")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture_normal = ExtResource("3_wk0pr")
 
@@ -107,7 +147,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ubpvv")
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_p8ri8")
 theme_override_font_sizes/font_size = 18
@@ -117,12 +161,19 @@ text = "Connect to Spotify"
 layout_mode = 2
 focus_mode = 0
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_p8ri8")
 text = "Select a local music folder or
 connect to Spotify to get started."
 horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="MusicFolderDialog" type="FileDialog" parent="."]
 unique_name_in_owner = true
@@ -135,8 +186,8 @@ use_native_dialog = true
 [node name="SpotifySetupMessage" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 142.0
+offset_bottom = 53.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_arv2f")
 

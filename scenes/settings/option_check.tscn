@@ -8,7 +8,11 @@
 [node name="OptionCheck" type="HBoxContainer"]
 script = ExtResource("1_0ypnx")
 
-[node name="OptionText" parent="." instance=ExtResource("1_w8y5t")]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+
+[node name="OptionText" parent="MarginContainer" instance=ExtResource("1_w8y5t")]
 layout_mode = 2
 
 [node name="CheckBox" type="CheckBox" parent="."]
