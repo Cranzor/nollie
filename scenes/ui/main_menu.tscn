@@ -96,6 +96,7 @@ unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 toggle_mode = true
+action_mode = 0
 texture_normal = ExtResource("2_wk0pr")
 texture_pressed = ExtResource("5_wb0q5")
 
@@ -159,6 +160,7 @@ theme_override_constants/margin_right = 5
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+action_mode = 0
 texture_normal = ExtResource("3_wk0pr")
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]

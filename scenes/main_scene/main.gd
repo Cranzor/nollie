@@ -13,6 +13,7 @@ extends Node
 func _ready() -> void:
 	previous_song_button.pressed.connect(_previous_song_button_clicked)
 	play_button.toggled.connect(_main_menu_button_clicked)
+	play_button.button_down.connect(_test)
 	next_song_button.pressed.connect(_next_song_button_clicked)
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
@@ -26,6 +27,9 @@ func _main_menu_button_clicked(toggled_on: bool) -> void:
 		music_manager.music_player.play()
 	else:
 		music_manager.music_player.pause()
+
+func _test() -> void:
+	print("clicked")
 
 func _previous_song_button_clicked() -> void:
 	music_manager.music_player.previous_track()
@@ -94,4 +98,3 @@ func handle_music_folder_selected(dir: String) -> void:
 	music_manager.music_player.initial_setup()
 	connection_message.display_local_music_message()
 	save_local_music_folder_path(dir)
-	play_button.button_pressed = false

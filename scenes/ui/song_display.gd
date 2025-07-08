@@ -1,5 +1,6 @@
 extends Control
 
+@export var song_display_theme: SongDisplayTheme
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var song_title: Label = $MarginContainer/PanelContainer/HBoxContainer/SongTitle
 @onready var song_title2: Label = $MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/MarginContainer/SongTitle2
@@ -15,6 +16,7 @@ var padding: Vector2 = Vector2(1, 0) # for 1 pixel gap on the right side of song
 
 var prev_position
 func _ready() -> void:
+	set_up_theme()
 	default_position = position + padding
 	off_screen_pos.y = default_position.y
 	off_screen_pos.x = default_position.x + max_length
@@ -57,7 +59,6 @@ func _size_changed() -> void:
 	if width >= max_length:
 		song_title.hide()
 		scroll_container.show()
-		#TODO: animation_timer.stop() and then set it once scrolling finishes
 	else:
 		song_title.show()
 		scroll_container.hide()
@@ -80,5 +81,34 @@ func _scroll_start_timeout() -> void:
 func _on_scroll_tween_finished() -> void:
 	animation_timer.wait_time = 1.0
 	animation_timer.start()
+
+@onready var music_icon = $MarginContainer/PanelContainer/HBoxContainer/MarginContainer3/MusicIcon
+@onready var right_stick_icon = $MarginContainer/PanelContainer/HBoxContainer/MarginContainer2/RightStick
+@onready var skip_text = $MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Skip
+@onready var panel_container = $MarginContainer/PanelContainer
+func set_up_theme() -> void:
+	theme = song_display_theme
+	
+	song_title.add_theme_color_override("font_color", song_display_theme.track_text_font_color)
+	song_title2.add_theme_color_override("font_color", song_display_theme.track_text_font_color)
+	skip_text.add_theme_color_override("font_color", song_display_theme.skip_text_font_color)
+	
+	music_icon.texture = song_display_theme.music_icon
+	right_stick_icon.texture = song_display_theme.skip_song_icon
+	
+	panel_container.self_modulate.a = Color.from_rgba8(0, 0, 0, song_display_theme.background_transparency_level).a
+	music_icon.self_modulate.a = Color.from_rgba8(0, 0, 0, song_display_theme.music_icon_transparency_level).a
+	right_stick_icon.self_modulate.a = Color.from_rgba8(0, 0, 0, song_display_theme.skip_song_icon_transparency_level).a
+	
+	music_icon.visible = song_display_theme.display_music_icon
+	right_stick_icon.visible = song_display_theme.display_skip_song_icon
+	skip_text.visible = song_display_theme.display_skip_song_text
+	
+	song_title.add_theme_color_override("font_shadow_color", song_display_theme.track_text_shadow_color)
+	song_title2.add_theme_color_override("font_shadow_color", song_display_theme.track_text_shadow_color)
+	song_title.add_theme_constant_override("shadow_outline_size", song_display_theme.track_text_shadow_size)
+	song_title2.add_theme_constant_override("shadow_outline_size", song_display_theme.track_text_shadow_size)
+	skip_text.add_theme_color_override("font_shadow_color", song_display_theme.skip_text_shadow_color)
+	skip_text.add_theme_constant_override("shadow_outline_size", song_display_theme.skip_text_shadow_size)
 
 #TODO: display song when pausing

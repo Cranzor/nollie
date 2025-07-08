@@ -1,0 +1,31 @@
+[gd_resource type="Theme" script_class="SongDisplayTheme" load_steps=5 format=3 uid="uid://bclqqrp1ft5jd"]
+
+[ext_resource type="Script" uid="uid://mtc3v1ahl2fs" path="res://themes/song_display_theme.gd" id="1_ch2cq"]
+[ext_resource type="FontFile" uid="uid://bwp4dk7cub62w" path="res://fonts/Titillium_Web/TitilliumWeb-Italic.ttf" id="1_l07vt"]
+[ext_resource type="Texture2D" uid="uid://cmgsqcsdrwi1h" path="res://icons/musicOn.png" id="2_igk4r"]
+[ext_resource type="Texture2D" uid="uid://jvelle1in3vn" path="res://icons/xbox_rs_outline_orange_gray.png" id="4_qc3ro"]
+
+[resource]
+default_font = ExtResource("1_l07vt")
+default_font_size = 35
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+script = ExtResource("1_ch2cq")
+track_text_font_color = Color(1, 1, 1, 1)
+skip_text_font_color = Color(0.671, 0.694, 0.714, 1)
+track_text_shadow_color = Color(0, 0, 0, 1)
+skip_text_shadow_color = Color(0, 0, 0, 1)
+track_text_shadow_size = 1
+skip_text_shadow_size = 1
+music_icon = ExtResource("2_igk4r")
+skip_song_icon = ExtResource("4_qc3ro")
+background_transparency_level = 200
+music_icon_transparency_level = 255
+skip_song_icon_transparency_level = 255
+display_music_icon = true
+display_skip_song_icon = true
+display_skip_song_text = true
+before_track_text_bbcode = ""
+after_track_text_bbcode = ""
+before_skip_text_bbcode = ""
+after_skip_text_bbcode = ""
+metadata/_custom_type_script = "uid://mtc3v1ahl2fs"
