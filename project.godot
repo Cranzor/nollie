@@ -26,7 +26,7 @@ GlobalSettings="*res://scripts/global_settings.gd"
 [display]
 
 window/size/viewport_width=400
-window/size/viewport_height=300
+window/size/viewport_height=350
 window/size/resizable=false
 window/size/transparent=true
 window/subwindows/embed_subwindows=false

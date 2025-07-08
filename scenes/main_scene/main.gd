@@ -1,14 +1,19 @@
 extends Node
 @onready var main_menu = $MainMenu
 @onready var music_manager = $MusicManager
+@onready var previous_song_button = $MainMenu/PanelContainer/VBoxContainer/HBoxContainer/PreviousSong
 @onready var play_button = $MainMenu/PanelContainer/VBoxContainer/HBoxContainer/PlayButton
+@onready var next_song_button = $MainMenu/PanelContainer/VBoxContainer/HBoxContainer/NextSong
 @onready var track_label = $SongDisplayWindow/SongDisplay/MarginContainer/PanelContainer/HBoxContainer/SongTitle
 @onready var song_display = $SongDisplayWindow/SongDisplay
 @onready var music_folder_dialog: FileDialog = $MainMenu/MusicFolderDialog
 @onready var spotify_toggle = $MainMenu/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/SpotifyToggle
+@onready var connection_message = $MainMenu/PanelContainer/VBoxContainer/MarginContainer2/ConnectionMessage
 
 func _ready() -> void:
+	previous_song_button.pressed.connect(_previous_song_button_clicked)
 	play_button.toggled.connect(_main_menu_button_clicked)
+	next_song_button.pressed.connect(_next_song_button_clicked)
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
 	spotify_toggle.toggled.connect(_spotify_toggle)
@@ -21,16 +26,25 @@ func _main_menu_button_clicked(toggled_on: bool) -> void:
 	else:
 		music_manager.music_player.pause()
 
+func _previous_song_button_clicked() -> void:
+	music_manager.music_player.previous_track()
+
+func _next_song_button_clicked() -> void:
+	music_manager.music_player.next_track()
+
 func _current_track_changed(track_name: String) -> void:
 	if play_button.button_pressed == false:
 		play_button.button_pressed = true
 	song_display.update_song_title_labels(track_name)
 	song_display.animation_appear()
+	main_menu.set_song_and_artist_names(track_name)
 
 func _music_folder_dir_selected(dir: String) -> void:
+	spotify_toggle.button_pressed = false
 	main_menu.enable_playback_buttons(true)
 	music_manager.music_player.music_directory = dir
 	music_manager.music_player.initial_setup()
+	connection_message.display_local_music_message()
 
 func _spotify_toggle(on: bool) -> void:
 	music_manager.handle_spotify_toggle(on)
@@ -39,9 +53,14 @@ func _spotify_toggle(on: bool) -> void:
 	if on:
 		music_manager.music_player.gopotify_lost_connection.connect(_handle_lost_gopotify_connection)
 		main_menu.enable_playback_buttons(true)
+		connection_message.display_spotify_message()
 	else:
 		if !music_manager.music_player.music_directory:
 			main_menu.enable_playback_buttons(false)
+			connection_message.display_default_message()
+		else:
+			connection_message.display_local_music_message()
+	main_menu.set_song_and_artist_name_visibility(false)
 
 func _handle_lost_gopotify_connection() -> void:
 	spotify_toggle.button_pressed = false

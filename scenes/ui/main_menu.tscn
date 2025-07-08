@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://butslodhti3t2"]
+[gd_scene load_steps=17 format=3 uid="uid://butslodhti3t2"]
 
 [ext_resource type="Script" uid="uid://08uvs7fh7c86" path="res://scenes/ui/main_menu.gd" id="1_0dkrt"]
 [ext_resource type="Texture2D" uid="uid://c5wotinim0tl1" path="res://icons/skip_previous.svg" id="2_8uxxo"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cyw3lpkbf4nx2" path="res://scenes/ui/interface_texture_button.tscn" id="4_btxxm"]
 [ext_resource type="Texture2D" uid="uid://c5to1d2lkp27b" path="res://icons/skip_next.svg" id="4_ei257"]
 [ext_resource type="Texture2D" uid="uid://c48ygitus4l1n" path="res://icons/pause.svg" id="5_wb0q5"]
+[ext_resource type="FontFile" uid="uid://ddcrrdlx8quwu" path="res://fonts/Inter/static/Inter_18pt-Bold.ttf" id="9_otr3d"]
+[ext_resource type="Script" uid="uid://ca3r4o3jmh38x" path="res://scenes/ui/connection_message.gd" id="11_7suek"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0q7"]
 bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
@@ -103,6 +105,25 @@ layout_mode = 2
 disabled = true
 texture_normal = ExtResource("4_ei257")
 
+[node name="SongAndArtist" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Song" type="Label" parent="PanelContainer/VBoxContainer/SongAndArtist"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_otr3d")
+theme_override_font_sizes/font_size = 18
+text = "Song"
+horizontal_alignment = 1
+
+[node name="Artist" type="Label" parent="PanelContainer/VBoxContainer/SongAndArtist"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74558, 0.74558, 0.74558, 1)
+theme_override_fonts/font = ExtResource("3_p8ri8")
+text = "Artist"
+horizontal_alignment = 1
+
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.168627)
 layout_mode = 2
@@ -165,12 +186,13 @@ focus_mode = 0
 layout_mode = 2
 theme_override_constants/margin_top = 30
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2"]
+[node name="ConnectionMessage" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_p8ri8")
 text = "Select a local music folder or
 connect to Spotify to get started."
 horizontal_alignment = 1
+script = ExtResource("11_7suek")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

@@ -6,6 +6,9 @@ extends Control
 @onready var settings = %Settings
 @onready var previous_song = %PreviousSong
 @onready var next_song = %NextSong
+@onready var song_and_artist = $PanelContainer/VBoxContainer/SongAndArtist
+@onready var song_title = $PanelContainer/VBoxContainer/SongAndArtist/Song
+@onready var artist_name = $PanelContainer/VBoxContainer/SongAndArtist/Artist
 var settings_window: Control
 
 @onready var spotify_check_button = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/SpotifyToggle
@@ -30,6 +33,7 @@ func enable_playback_buttons(enable: bool):
 			button.disabled = false
 			button.reset_button_color()
 		else:
+			button.darken_button_color()
 			button.disabled = true
 
 func _on_play_button_mouse_entered() -> void:
@@ -67,3 +71,18 @@ func check_spotify_settings() -> void:
 
 func _spotify_value_changed(value: String) -> void:
 	check_spotify_settings()
+
+func set_song_and_artist_names(track: String) -> void:
+	#TODO: update this to handle songs that have " - " in the title better
+	set_song_and_artist_name_visibility(true)
+	var artist_and_song = track.split(" - ")
+	var artist = artist_and_song[0]
+	var song = artist_and_song[1]
+	song_title.text = song
+	artist_name.text = artist
+
+func set_song_and_artist_name_visibility(show: bool) -> void:
+	if show:
+		song_and_artist.show()
+	else:
+		song_and_artist.hide()
