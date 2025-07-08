@@ -163,7 +163,7 @@ focus_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 30
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2

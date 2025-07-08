@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="THPS Tunes"
-run/main_scene="uid://5xgqts8mvy6s"
+run/main_scene="uid://dp7m117vpt0vx"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 [audio]
@@ -26,10 +26,12 @@ GlobalSettings="*res://scripts/global_settings.gd"
 [display]
 
 window/size/viewport_width=400
-window/size/viewport_height=250
+window/size/viewport_height=300
 window/size/resizable=false
+window/size/transparent=true
 window/subwindows/embed_subwindows=false
 window/per_pixel_transparency/allowed=true
+display_server/driver.linuxbsd="wayland"
 
 [dotnet]
 
