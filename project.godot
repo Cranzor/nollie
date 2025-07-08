@@ -41,6 +41,10 @@ project/assembly_name="THPS Tunes"
 
 enabled=PackedStringArray("res://addons/global_input/plugin.cfg", "res://addons/gopotify/plugin.cfg")
 
+[global_group]
+
+option=""
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

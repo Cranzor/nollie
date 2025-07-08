@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbll7jmokqctq"]
+[gd_scene load_steps=8 format=3 uid="uid://bbll7jmokqctq"]
 
 [ext_resource type="Script" uid="uid://c1fypfhhm5fbc" path="res://scenes/settings/settings.gd" id="1_tt6xx"]
 [ext_resource type="FontFile" uid="uid://ddcrrdlx8quwu" path="res://fonts/Inter/static/Inter_18pt-Bold.ttf" id="1_vu5fi"]
 [ext_resource type="PackedScene" uid="uid://beirmn27iqsot" path="res://scenes/settings/option_input.tscn" id="2_vu5fi"]
 [ext_resource type="PackedScene" uid="uid://1tqephidmgke" path="res://scenes/settings/option_check.tscn" id="4_1slea"]
+[ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="4_v1hle"]
+[ext_resource type="Script" uid="uid://cwt1k6l82ywqd" path="res://scenes/settings/spotify_setup_message.gd" id="5_vghtj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36l1p"]
 bg_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
@@ -67,6 +69,19 @@ text = "Port:"
 
 [node name="LineEdit" parent="Window/PanelContainer/TabContainer/Spotify/Port" index="1"]
 custom_minimum_size = Vector2(50, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="Window/PanelContainer/TabContainer/Spotify"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="SpotifySetupMessage" type="RichTextLabel" parent="Window/PanelContainer/TabContainer/Spotify/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_v1hle")
+bbcode_enabled = true
+fit_content = true
+script = ExtResource("5_vghtj")
 
 [node name="Sound" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
 visible = false

@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="2_5wina"]
 [ext_resource type="PackedScene" uid="uid://clsao3hwyecmx" path="res://scenes/settings/reset_settings.tscn" id="4_5aufs"]
 
-[node name="OptionInput" type="HBoxContainer"]
+[node name="OptionInput" type="HBoxContainer" groups=["option"]]
 offset_right = 200.0
 offset_bottom = 28.0
 script = ExtResource("1_8isno")

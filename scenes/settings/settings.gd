@@ -32,5 +32,6 @@ func set_cfg_file_values(cfg_file: ConfigFile):
 	for section in sections:
 		var options = section.get_children()
 		for option in options:
-			cfg_file.set_value(section.name.to_snake_case(), option.setting_name, GlobalSettings.get(option.setting_name))
+			if option.is_in_group("option"):
+				cfg_file.set_value(section.name.to_snake_case(), option.setting_name, GlobalSettings.get(option.setting_name))
 	cfg_file.save(GlobalSettings.settings_cfg_path)

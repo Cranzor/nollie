@@ -2,6 +2,6 @@
 
 [ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="1_rj1r5"]
 
-[node name="OptionText" type="Label"]
+[node name="OptionText" type="Label" groups=["option"]]
 theme_override_fonts/font = ExtResource("1_rj1r5")
 text = "Option:"

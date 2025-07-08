@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://cv8yqgfvys7hm" path="res://themes/check_box.tres" id="3_i4mpd"]
 [ext_resource type="PackedScene" uid="uid://clsao3hwyecmx" path="res://scenes/settings/reset_settings.tscn" id="4_261fe"]
 
-[node name="OptionCheck" type="HBoxContainer"]
+[node name="OptionCheck" type="HBoxContainer" groups=["option"]]
 script = ExtResource("1_0ypnx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
