@@ -21,6 +21,7 @@ func _ready() -> void:
 
 
 func _main_menu_button_clicked(toggled_on: bool) -> void:
+	print("hi")
 	if toggled_on:
 		music_manager.music_player.play()
 	else:
@@ -40,11 +41,7 @@ func _current_track_changed(track_name: String) -> void:
 	main_menu.set_song_and_artist_names(track_name)
 
 func _music_folder_dir_selected(dir: String) -> void:
-	spotify_toggle.button_pressed = false
-	main_menu.enable_playback_buttons(true)
-	music_manager.music_player.music_directory = dir
-	music_manager.music_player.initial_setup()
-	connection_message.display_local_music_message()
+	handle_music_folder_selected(dir)
 
 func _spotify_toggle(on: bool) -> void:
 	music_manager.handle_spotify_toggle(on)
@@ -75,3 +72,26 @@ func load_saved_settings():
 		var section_keys = settings_cfg.get_section_keys(section)
 		for key in section_keys:
 			GlobalSettings.set(key, settings_cfg.get_value(section, key))
+	
+	if GlobalSettings.saved_local_music_folder_path != "":
+		handle_music_folder_selected(GlobalSettings.saved_local_music_folder_path)
+
+func save_local_music_folder_path(path: String):
+	var settings_cfg = ConfigFile.new()
+	if !FileAccess.file_exists(GlobalSettings.settings_cfg_path):
+		return
+	var err = settings_cfg.load(GlobalSettings.settings_cfg_path)
+	if err != OK:
+		return
+	settings_cfg.set_value("general", "saved_local_music_folder_path", GlobalSettings.saved_local_music_folder_path)
+	settings_cfg.save(GlobalSettings.settings_cfg_path)
+
+func handle_music_folder_selected(dir: String) -> void:
+	GlobalSettings.saved_local_music_folder_path = dir
+	spotify_toggle.button_pressed = false
+	main_menu.enable_playback_buttons(true)
+	music_manager.music_player.music_directory = dir
+	music_manager.music_player.initial_setup()
+	connection_message.display_local_music_message()
+	save_local_music_folder_path(dir)
+	play_button.button_pressed = false
