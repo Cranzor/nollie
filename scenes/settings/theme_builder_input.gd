@@ -19,6 +19,7 @@ var file_path: String
 @onready var options = [line_edit, check_box, color_picker_button]
 
 signal theme_value_updated(property, value)
+signal file_path_entered
 
 func _ready() -> void:
 	if label.text == "Setting:":
@@ -29,25 +30,18 @@ func _ready() -> void:
 	show_child_nodes(theme_builder_type)
 	if theme_builder_type == 3:
 		line_edit.custom_minimum_size = Vector2(25, 2)
-	window = get_window()
-	
-	window.files_dropped.connect(_file_dropped)
+
 	line_edit.mouse_entered.connect(_mouse_entered_box)
-	line_edit.mouse_exited.connect(_mouse_exited_box)
 	line_edit.text_submitted.connect(_line_edit_text_submitted)
 	check_box.toggled.connect(_check_box_toggled)
 	color_picker_button.color_changed.connect(_color_changed)
 
 
-func _file_dropped(files: PackedStringArray) -> void:
-	file_path = files[0]
-
 func _mouse_entered_box() -> void:
-	if file_path != "":
-		line_edit.text = file_path
-
-func _mouse_exited_box() -> void:
-	file_path = ""
+	var current_file_path: String = get_parent().get_parent().current_file_path
+	if current_file_path != "":
+		line_edit.text = current_file_path
+		emit_signal("file_path_entered")
 
 func show_child_nodes(type: int) -> void:
 	if type == 1:
