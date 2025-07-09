@@ -4,11 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://nhflufr3eu82" path="res://scenes/settings/theme_builder_input.tscn" id="1_rdvkw"]
 
 [node name="ThemeBuilder" type="ScrollContainer"]
-custom_minimum_size = Vector2(0, 370)
+custom_minimum_size = Vector2(0, 450)
 script = ExtResource("1_mr08n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="ThemeBuilderInput21" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "font"
+file_type = 2
 
 [node name="ThemeBuilderInput" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
@@ -43,14 +48,17 @@ theme_builder_type = 3
 [node name="ThemeBuilderInput7" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
 property_to_change = "background_texture"
+file_type = 1
 
 [node name="ThemeBuilderInput8" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
 property_to_change = "music_icon"
+file_type = 1
 
 [node name="ThemeBuilderInput9" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
 property_to_change = "skip_song_icon"
+file_type = 1
 
 [node name="ThemeBuilderInput10" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
@@ -72,15 +80,24 @@ layout_mode = 2
 property_to_change = "display_music_icon"
 theme_builder_type = 1
 
+[node name="CheckBox" parent="VBoxContainer/ThemeBuilderInput13" index="2"]
+button_pressed = true
+
 [node name="ThemeBuilderInput14" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
 property_to_change = "display_skip_song_icon"
 theme_builder_type = 1
 
+[node name="CheckBox" parent="VBoxContainer/ThemeBuilderInput14" index="2"]
+button_pressed = true
+
 [node name="ThemeBuilderInput15" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
 property_to_change = "display_skip_song_text"
 theme_builder_type = 1
+
+[node name="CheckBox" parent="VBoxContainer/ThemeBuilderInput15" index="2"]
+button_pressed = true
 
 [node name="ThemeBuilderInput16" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
@@ -106,3 +123,7 @@ theme_builder_type = 4
 layout_mode = 2
 property_to_change = "after_skip_text_bbcode"
 theme_builder_type = 4
+
+[editable path="VBoxContainer/ThemeBuilderInput13"]
+[editable path="VBoxContainer/ThemeBuilderInput14"]
+[editable path="VBoxContainer/ThemeBuilderInput15"]

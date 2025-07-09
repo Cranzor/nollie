@@ -8,12 +8,13 @@ var mouse_inside_box: bool = false
 var file_path: String
 @onready var label = $MarginContainer/Label
 
-@export_enum("track_text_font_color", "skip_text_font_color", "track_text_shadow_color", "skip_text_shadow_color",
+@export_enum("font", "track_text_font_color", "skip_text_font_color", "track_text_shadow_color", "skip_text_shadow_color",
 "track_text_shadow_size", "skip_text_shadow_size", "background_texture", "music_icon", "skip_song_icon", "background_transparency_level",
 "music_icon_transparency_level", "skip_song_icon_transparency_level", "display_music_icon", "display_skip_song_icon", "display_skip_song_text",
 "before_track_text_bbcode", "after_track_text_bbcode", "before_skip_text_bbcode", "after_skip_text_bbcode") var property_to_change: String
 
 @export_enum("File Path", "Check Box", "Color", "Int", "BBCode") var theme_builder_type: int
+@export_enum("None", "Image", "Font") var file_type: int
 @onready var type_and_node = {0 : line_edit, 1 : check_box, 2 : color_picker_button, 3 : line_edit, 4 : line_edit}
 @onready var options = [line_edit, check_box, color_picker_button]
 
@@ -59,7 +60,22 @@ func show_child_nodes(type: int) -> void:
 		line_edit.hide()
 
 func _line_edit_text_submitted(new_text: String):
-	emit_signal("theme_value_updated", property_to_change, new_text)
+	var value: Variant = new_text
+	if theme_builder_type == 0:
+		if FileAccess.file_exists(new_text):
+			# handle images
+			if file_type == 1:
+				var image: Image = Image.new()
+				image.load(new_text)
+				var image_texture = ImageTexture.new()
+				image_texture.set_image(image)
+				value = image_texture
+			# handle font files
+			elif file_type == 2:
+				var font = FontFile.new()
+				var error = font.load_dynamic_font(new_text)
+				value = font
+	emit_signal("theme_value_updated", property_to_change, value)
 
 func _check_box_toggled(toggled_on: bool):
 	emit_signal("theme_value_updated", property_to_change, toggled_on)

@@ -56,10 +56,16 @@ size_flags_vertical = 4
 texture = ExtResource("1_6i5vd")
 expand_mode = 1
 
-[node name="SongTitle" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
+[node name="SongTitle" type="RichTextLabel" parent="MarginContainer/PanelContainer/HBoxContainer"]
+clip_contents = false
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
 text = "The Kickflips - Nollie Onward"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
 visible = false
@@ -73,9 +79,16 @@ vertical_scroll_mode = 0
 layout_mode = 2
 theme_override_constants/margin_right = 10
 
-[node name="SongTitle2" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/MarginContainer"]
+[node name="SongTitle2" type="RichTextLabel" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/MarginContainer"]
+clip_contents = false
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
 text = "The Heelflips - Fakie Rollaway (Live Version)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2

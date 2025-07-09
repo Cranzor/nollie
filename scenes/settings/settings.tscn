@@ -23,7 +23,7 @@ script = ExtResource("1_tt6xx")
 [node name="Window" type="Window" parent="."]
 title = "Settings"
 initial_position = 4
-size = Vector2i(700, 400)
+size = Vector2i(700, 500)
 
 [node name="PanelContainer" type="PanelContainer" parent="Window"]
 anchors_preset = 15

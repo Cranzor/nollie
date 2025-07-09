@@ -2,8 +2,8 @@ extends Control
 
 @export var song_display_theme: SongDisplayTheme
 @onready var margin_container: MarginContainer = $MarginContainer
-@onready var song_title: Label = $MarginContainer/PanelContainer/HBoxContainer/SongTitle
-@onready var song_title2: Label = $MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/MarginContainer/SongTitle2
+@onready var song_title: RichTextLabel = $MarginContainer/PanelContainer/HBoxContainer/SongTitle
+@onready var song_title2: RichTextLabel = $MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/MarginContainer/SongTitle2
 @onready var scroll_container: ScrollContainer = $MarginContainer/PanelContainer/HBoxContainer/ScrollContainer
 @onready var animation_timer: Timer = $AnimationTimer
 @onready var scroll_start: Timer = $ScrollStart
@@ -89,9 +89,11 @@ func _on_scroll_tween_finished() -> void:
 @onready var panel_container = $MarginContainer/PanelContainer
 func set_up_theme() -> void:
 	theme = song_display_theme
+	if song_display_theme.font:
+		theme.default_font = song_display_theme.font
 	
-	song_title.add_theme_color_override("font_color", song_display_theme.track_text_font_color)
-	song_title2.add_theme_color_override("font_color", song_display_theme.track_text_font_color)
+	song_title.add_theme_color_override("default_color", song_display_theme.track_text_font_color)
+	song_title2.add_theme_color_override("default_color", song_display_theme.track_text_font_color)
 	skip_text.add_theme_color_override("font_color", song_display_theme.skip_text_font_color)
 	
 	music_icon.texture = song_display_theme.music_icon
@@ -111,5 +113,10 @@ func set_up_theme() -> void:
 	song_title2.add_theme_constant_override("shadow_outline_size", song_display_theme.track_text_shadow_size)
 	skip_text.add_theme_color_override("font_shadow_color", song_display_theme.skip_text_shadow_color)
 	skip_text.add_theme_constant_override("shadow_outline_size", song_display_theme.skip_text_shadow_size)
+	
+	var song_name = song_title.text
+	var song_name2 = song_title2.text
+	song_title.text = song_display_theme.before_track_text_bbcode + song_name + song_display_theme.after_track_text_bbcode
+	song_title2.text = song_display_theme.before_track_text_bbcode + song_name2 + song_display_theme.after_track_text_bbcode
 
 #TODO: display song when pausing

@@ -1,6 +1,9 @@
 extends Theme
 class_name SongDisplayTheme
 
+@export_category("Font")
+@export var font: FontFile
+
 @export_category("Font Colors")
 @export var track_text_font_color: Color = Color(1.0, 1.0, 1.0)
 @export var skip_text_font_color: Color = Color(0.671, 0.694, 0.714)
