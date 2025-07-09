@@ -8,6 +8,9 @@ extends Control
 @onready var spotify_client_id_field = $Window/PanelContainer/TabContainer/Spotify/ClientID/LineEdit
 @onready var spotify_client_secret_field = $Window/PanelContainer/TabContainer/Spotify/ClientSecret/LineEdit
 @onready var spotify_client_port_field = $Window/PanelContainer/TabContainer/Spotify/Port/LineEdit
+@onready var theme_builder_tab = $Window/PanelContainer/TabContainer/ThemeBuilder
+@onready var tab_container: TabContainer = $Window/PanelContainer/TabContainer
+@onready var theme_builder: ScrollContainer
 
 func _ready() -> void:
 	settings_cfg = ConfigFile.new()
@@ -16,6 +19,8 @@ func _ready() -> void:
 	var err = settings_cfg.load(GlobalSettings.settings_cfg_path)
 	if err != OK:
 		return
+	
+	tab_container.tab_changed.connect(_tab_container_tab_changed)
 	#settings_cfg.clear()
 	#settings_cfg.save(GlobalSettings.settings_cfg_path)
 
@@ -35,3 +40,8 @@ func set_cfg_file_values(cfg_file: ConfigFile):
 			if option.is_in_group("option"):
 				cfg_file.set_value(section.name.to_snake_case(), option.setting_name, GlobalSettings.get(option.setting_name))
 	cfg_file.save(GlobalSettings.settings_cfg_path)
+
+func _tab_container_tab_changed(tab: int) -> void:
+	if tab == 4 and !is_instance_valid(theme_builder):
+		theme_builder = preload("res://scenes/settings/theme_builder.tscn").instantiate()
+		theme_builder_tab.add_child(theme_builder)

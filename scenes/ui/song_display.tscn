@@ -59,8 +59,10 @@ expand_mode = 1
 [node name="SongTitle" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "The Kickflips - Nollie Onward"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 size_flags_vertical = 4

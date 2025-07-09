@@ -28,7 +28,7 @@ func _ready() -> void:
 	
 	GlobalSettings.song_display_offset_changed.connect(_adjust_song_display_offset)
 
-func animation_appear() -> void:
+func animation_appear(start_disappear_timer: bool) -> void:
 	scroll_container.scroll_horizontal = 0
 	if position.round() != default_position:
 		if position_tween:
@@ -38,9 +38,10 @@ func animation_appear() -> void:
 		position_tween.set_trans(Tween.TRANS_CUBIC)
 		position_tween.tween_property(self, "position", default_position, 0.8)
 	
-	animation_timer.wait_time = 3.0
-	animation_timer.start()
-	scroll_start.start()
+	if start_disappear_timer:
+		animation_timer.wait_time = 3.0
+		animation_timer.start()
+		scroll_start.start()
 
 func animation_disappear() -> void:
 	position_tween = create_tween()

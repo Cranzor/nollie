@@ -15,6 +15,8 @@ var settings_window: Control
 @onready var spotify_setup_message = $SpotifySetupMessage
 @onready var spotify_setup_message_container = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer
 
+signal settings_button_pressed
+
 func _ready() -> void:
 	folder_button.pressed.connect(_folder_button_pressed)
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
@@ -61,7 +63,9 @@ func _hide_spotify_setup_message():
 func _settings_button_pressed() -> void:
 	if !is_instance_valid(settings_window):
 		var settings_window_node = preload("res://scenes/settings/settings.tscn").instantiate()
+		settings_window_node.name = "Settings"
 		add_child(settings_window_node)
+		emit_signal("settings_button_pressed")
 
 func check_spotify_settings() -> void:
 	if GlobalSettings.spotify_client_id == "" or GlobalSettings.spotify_client_secret == "":

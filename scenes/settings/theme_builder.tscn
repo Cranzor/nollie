@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://xafqijikf6us"]
+
+[ext_resource type="PackedScene" uid="uid://nhflufr3eu82" path="res://scenes/settings/theme_builder_input.tscn" id="1_rdvkw"]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+custom_minimum_size = Vector2(0, 370)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ThemeBuilderInput" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "skip_text_font_color"
+theme_builder_type = 2
+
+[node name="ThemeBuilderInput2" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "skip_text_font_color"
+theme_builder_type = 2
+
+[node name="ThemeBuilderInput3" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "track_text_shadow_color"
+theme_builder_type = 2
+
+[node name="ThemeBuilderInput4" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "skip_text_shadow_color"
+theme_builder_type = 2
+
+[node name="ThemeBuilderInput5" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "track_text_shadow_size"
+theme_builder_type = 3
+
+[node name="ThemeBuilderInput6" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "skip_text_shadow_size"
+theme_builder_type = 3
+
+[node name="ThemeBuilderInput7" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "background_texture"
+
+[node name="ThemeBuilderInput8" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "music_icon"
+
+[node name="ThemeBuilderInput9" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "skip_song_icon"
+
+[node name="ThemeBuilderInput10" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "background_transparency_level"
+theme_builder_type = 3
+
+[node name="ThemeBuilderInput11" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "music_icon_transparency_level"
+theme_builder_type = 3
+
+[node name="ThemeBuilderInput12" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "skip_song_icon_transparency_level"
+theme_builder_type = 3
+
+[node name="ThemeBuilderInput13" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "display_music_icon"
+theme_builder_type = 1
+
+[node name="ThemeBuilderInput14" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "display_skip_song_icon"
+theme_builder_type = 1
+
+[node name="ThemeBuilderInput15" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "display_skip_song_text"
+theme_builder_type = 1
+
+[node name="ThemeBuilderInput16" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "before_track_text_bbcode"
+theme_builder_type = 4
+
+[node name="ThemeBuilderInput17" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "after_track_text_bbcode"
+theme_builder_type = 4
+
+[node name="ThemeBuilderInput18" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "before_skip_text_bbcode"
+theme_builder_type = 4
+
+[node name="ThemeBuilderInput19" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "after_skip_text_bbcode"
+theme_builder_type = 4
+
+[node name="ThemeBuilderInput20" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "after_skip_text_bbcode"
+theme_builder_type = 4

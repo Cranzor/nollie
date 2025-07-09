@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://nhflufr3eu82"]
+
+[ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="1_0j35h"]
+[ext_resource type="Script" uid="uid://c4p0m2e7ev0mu" path="res://scenes/settings/theme_builder_input.gd" id="1_af4ok"]
+[ext_resource type="Theme" uid="uid://cv8yqgfvys7hm" path="res://themes/check_box.tres" id="3_k3fbw"]
+[ext_resource type="Script" uid="uid://dm5idvng4w8ye" path="res://scenes/settings/color_picker_button.gd" id="4_j6xki"]
+
+[node name="ThemeBuilderInput" type="HBoxContainer" groups=["theme_builder_input"]]
+offset_right = 160.0
+offset_bottom = 20.0
+theme = ExtResource("3_k3fbw")
+script = ExtResource("1_af4ok")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0j35h")
+text = "Setting:"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+caret_blink = true
+
+[node name="CheckBox" type="CheckBox" parent="."]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_k3fbw")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme = ExtResource("3_k3fbw")
+color = Color(1, 1, 1, 1)
+script = ExtResource("4_j6xki")

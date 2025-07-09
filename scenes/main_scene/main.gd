@@ -18,6 +18,7 @@ func _ready() -> void:
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
 	spotify_toggle.toggled.connect(_spotify_toggle)
+	main_menu.settings_button_pressed.connect(_settings_button_pressed)
 	load_saved_settings()
 
 
@@ -41,7 +42,7 @@ func _current_track_changed(track_name: String) -> void:
 	if play_button.button_pressed == false:
 		play_button.button_pressed = true
 	song_display.update_song_title_labels(track_name)
-	song_display.animation_appear()
+	song_display.animation_appear(true)
 	main_menu.set_song_and_artist_names(track_name)
 
 func _music_folder_dir_selected(dir: String) -> void:
@@ -98,3 +99,14 @@ func handle_music_folder_selected(dir: String) -> void:
 	music_manager.music_player.initial_setup()
 	connection_message.display_local_music_message()
 	save_local_music_folder_path(dir)
+
+func _settings_button_pressed():
+	var settings_tabs: TabContainer = $MainMenu/Settings/Window/PanelContainer/TabContainer
+	settings_tabs.tab_changed.connect(_settings_theme_builder_tab_clicked)
+
+func _settings_theme_builder_tab_clicked(tab: int) -> void:
+	var theme_builder_tab: int = 4
+	if tab == theme_builder_tab:
+		song_display.animation_appear(false)
+	else:
+		song_display.animation_disappear()

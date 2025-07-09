@@ -5,4 +5,6 @@
 
 [resource]
 CheckBox/icons/unchecked = ExtResource("1_1hoqd")
+Label/fonts/font = ExtResource("2_igdqf")
+LineEdit/fonts/font = ExtResource("2_igdqf")
 TabBar/fonts/font = ExtResource("2_igdqf")
