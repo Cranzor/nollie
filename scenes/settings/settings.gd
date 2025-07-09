@@ -11,6 +11,7 @@ extends Control
 @onready var theme_builder_tab = $Window/PanelContainer/TabContainer/ThemeBuilder
 @onready var tab_container: TabContainer = $Window/PanelContainer/TabContainer
 @onready var theme_builder: ScrollContainer
+signal custom_theme_updated(custom_theme: SongDisplayTheme)
 
 func _ready() -> void:
 	settings_cfg = ConfigFile.new()
@@ -45,3 +46,8 @@ func _tab_container_tab_changed(tab: int) -> void:
 	if tab == 4 and !is_instance_valid(theme_builder):
 		theme_builder = preload("res://scenes/settings/theme_builder.tscn").instantiate()
 		theme_builder_tab.add_child(theme_builder)
+		var theme_builder_node = theme_builder_tab.get_child(0)
+		theme_builder_node.custom_theme_updated.connect(_custom_theme_updated)
+
+func _custom_theme_updated(custom_theme: SongDisplayTheme):
+	emit_signal("custom_theme_updated", custom_theme)

@@ -16,6 +16,7 @@ var settings_window: Control
 @onready var spotify_setup_message_container = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer
 
 signal settings_button_pressed
+signal custom_theme_updated(custom_theme: SongDisplayTheme)
 
 func _ready() -> void:
 	folder_button.pressed.connect(_folder_button_pressed)
@@ -66,6 +67,7 @@ func _settings_button_pressed() -> void:
 		settings_window_node.name = "Settings"
 		add_child(settings_window_node)
 		emit_signal("settings_button_pressed")
+		settings_window_node.custom_theme_updated.connect(_custom_theme_updated)
 
 func check_spotify_settings() -> void:
 	if GlobalSettings.spotify_client_id == "" or GlobalSettings.spotify_client_secret == "":
@@ -94,3 +96,6 @@ func set_song_and_artist_name_visibility(show: bool) -> void:
 		song_and_artist.show()
 	else:
 		song_and_artist.hide()
+
+func _custom_theme_updated(custom_theme: SongDisplayTheme):
+	emit_signal("custom_theme_updated", custom_theme)

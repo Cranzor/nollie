@@ -19,6 +19,7 @@ func _ready() -> void:
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
 	spotify_toggle.toggled.connect(_spotify_toggle)
 	main_menu.settings_button_pressed.connect(_settings_button_pressed)
+	main_menu.custom_theme_updated.connect(_custom_theme_updated)
 	load_saved_settings()
 
 
@@ -110,3 +111,8 @@ func _settings_theme_builder_tab_clicked(tab: int) -> void:
 		song_display.animation_appear(false)
 	else:
 		song_display.animation_disappear()
+
+func _custom_theme_updated(custom_theme: SongDisplayTheme):
+	song_display.theme = custom_theme
+	song_display.song_display_theme = custom_theme
+	song_display.set_up_theme()

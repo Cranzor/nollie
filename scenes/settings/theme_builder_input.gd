@@ -6,7 +6,6 @@ var mouse_inside_box: bool = false
 @onready var check_box = $CheckBox
 @onready var color_picker_button = $ColorPickerButton
 var file_path: String
-var default_song_display: SongDisplayTheme
 @onready var label = $MarginContainer/Label
 
 @export_enum("track_text_font_color", "skip_text_font_color", "track_text_shadow_color", "skip_text_shadow_color",
@@ -18,6 +17,8 @@ var default_song_display: SongDisplayTheme
 @onready var type_and_node = {0 : line_edit, 1 : check_box, 2 : color_picker_button, 3 : line_edit, 4 : line_edit}
 @onready var options = [line_edit, check_box, color_picker_button]
 
+signal theme_value_updated(property, value)
+
 func _ready() -> void:
 	if label.text == "Setting:":
 		var new_text = property_to_change
@@ -28,11 +29,14 @@ func _ready() -> void:
 	if theme_builder_type == 3:
 		line_edit.custom_minimum_size = Vector2(25, 2)
 	window = get_window()
+	
 	window.files_dropped.connect(_file_dropped)
 	line_edit.mouse_entered.connect(_mouse_entered_box)
 	line_edit.mouse_exited.connect(_mouse_exited_box)
-	default_song_display = preload("res://themes/default_song_display.tres")
-	
+	line_edit.text_submitted.connect(_line_edit_text_submitted)
+	check_box.toggled.connect(_check_box_toggled)
+	color_picker_button.color_changed.connect(_color_changed)
+
 
 func _file_dropped(files: PackedStringArray) -> void:
 	file_path = files[0]
@@ -53,3 +57,12 @@ func show_child_nodes(type: int) -> void:
 		color_picker_button.show()
 		check_box.hide()
 		line_edit.hide()
+
+func _line_edit_text_submitted(new_text: String):
+	emit_signal("theme_value_updated", property_to_change, new_text)
+
+func _check_box_toggled(toggled_on: bool):
+	emit_signal("theme_value_updated", property_to_change, toggled_on)
+
+func _color_changed(color: Color):
+	emit_signal("theme_value_updated", property_to_change, color)

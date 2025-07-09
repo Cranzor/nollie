@@ -1,16 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://xafqijikf6us"]
+[gd_scene load_steps=3 format=3 uid="uid://xafqijikf6us"]
 
+[ext_resource type="Script" uid="uid://cbls23q5vcuf0" path="res://scenes/settings/theme_builder.gd" id="1_mr08n"]
 [ext_resource type="PackedScene" uid="uid://nhflufr3eu82" path="res://scenes/settings/theme_builder_input.tscn" id="1_rdvkw"]
 
-[node name="ScrollContainer" type="ScrollContainer"]
+[node name="ThemeBuilder" type="ScrollContainer"]
 custom_minimum_size = Vector2(0, 370)
+script = ExtResource("1_mr08n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="ThemeBuilderInput" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
-property_to_change = "skip_text_font_color"
+property_to_change = "track_text_font_color"
 theme_builder_type = 2
 
 [node name="ThemeBuilderInput2" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
