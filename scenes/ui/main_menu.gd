@@ -74,12 +74,16 @@ func _spotify_value_changed(value: String) -> void:
 
 func set_song_and_artist_names(track: String) -> void:
 	#TODO: update this to handle songs that have " - " in the title better
-	set_song_and_artist_name_visibility(true)
-	var artist_and_song = track.split(" - ")
-	var artist = artist_and_song[0]
-	var song = artist_and_song[1]
-	song_title.text = song
-	artist_name.text = artist
+	var delimiter = " - "
+	if track.contains(delimiter):
+		set_song_and_artist_name_visibility(true)
+		var artist_and_song = track.split(" - ")
+		var artist = artist_and_song[0]
+		var song = artist_and_song[1]
+		song_title.text = song
+		artist_name.text = artist
+	else:
+		set_song_and_artist_name_visibility(false)
 
 func set_song_and_artist_name_visibility(show: bool) -> void:
 	if show:
