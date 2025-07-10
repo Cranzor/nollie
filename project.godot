@@ -14,6 +14,7 @@ config/name="Nollie Player"
 config/version="1.0.0.0"
 run/main_scene="uid://dp7m117vpt0vx"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+boot_splash/show_image=false
 config/icon="uid://bliispm0hh5qq"
 
 [audio]

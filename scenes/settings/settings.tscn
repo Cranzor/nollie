@@ -36,10 +36,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_36l1p")
 [node name="TabContainer" type="TabContainer" parent="Window/PanelContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_vu5fi")
-current_tab = 0
+current_tab = 3
 tab_focus_mode = 0
 
 [node name="Spotify" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -127,11 +128,14 @@ setting_name = "previous_song_control_enabled"
 text = "Left stick press (L3) to play previous song:"
 
 [node name="Display" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="Label" type="Label" parent="Window/PanelContainer/TabContainer/Display"]
+[node name="MarginContainer" type="MarginContainer" parent="Window/PanelContainer/TabContainer/Display"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+
+[node name="Label" type="Label" parent="Window/PanelContainer/TabContainer/Display/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_v1hle")
 text = "For an easier way to apply a theme, drag and drop the file over the main menu."
