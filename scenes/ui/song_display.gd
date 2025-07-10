@@ -34,6 +34,7 @@ func _ready() -> void:
 	scroll_start.timeout.connect(_scroll_start_timeout)
 	
 	GlobalSettings.song_display_offset_changed.connect(_adjust_song_display_offset)
+	GlobalSettings.applied_theme_path_changed.connect(_changed_theme_based_on_path)
 
 func animation_appear(start_disappear_timer: bool) -> void:
 	scroll_container.scroll_horizontal = 0
@@ -81,6 +82,23 @@ func _size_changed() -> void:
 
 func _adjust_song_display_offset(new_pixel_offset: int) -> void:
 	margin_container.add_theme_constant_override("margin_bottom", new_pixel_offset)
+
+func _changed_theme_based_on_path(path: String) -> void:
+	if path == "":
+		var default_song_display_theme = preload("res://themes/default_song_display.tres")
+		set_new_theme(default_song_display_theme)
+		set_up_theme()
+		if $ApplicationStartup.is_stopped():
+			animation_appear(true)
+	else:
+		set_new_theme(load(path))
+		set_up_theme()
+		if $ApplicationStartup.is_stopped():
+			animation_appear(true)
+	
+func set_new_theme(passed_theme) -> void:
+	theme = passed_theme
+	song_display_theme = passed_theme
 
 func _scroll_start_timeout() -> void:
 	if scroll_container.visible:

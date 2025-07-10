@@ -23,6 +23,7 @@ signal spotify_client_id_changed(new_client_id)
 signal spotify_client_secret_changed(new_client_secret)
 signal spotify_port_changed(new_port)
 signal song_display_offset_changed(new_pixel_offset: int)
+signal applied_theme_path_changed(new_path: String)
 
 # controls
 var previous_song_control_enabled: bool = false
@@ -32,7 +33,13 @@ var song_display_pixel_offset_from_bottom: int = 10:
 	set(value):
 		song_display_pixel_offset_from_bottom = value
 		emit_signal("song_display_offset_changed", value)
-var applied_theme_path: String = ""
+var applied_theme_path: String = "":
+	set(value):
+		var previous_value = applied_theme_path
+		applied_theme_path = value
+		
+		if previous_value != value:
+			emit_signal("applied_theme_path_changed", value)
 var song_display_seconds_on_screen: int = 3
 
 # general

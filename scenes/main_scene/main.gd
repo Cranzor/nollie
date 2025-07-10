@@ -126,8 +126,7 @@ func _settings_theme_builder_tab_clicked(tab: int) -> void:
 		song_display.animation_disappear()
 
 func _custom_theme_updated(custom_theme: SongDisplayTheme):
-	song_display.theme = custom_theme
-	song_display.song_display_theme = custom_theme
+	song_display.set_theme(custom_theme)
 	song_display.set_up_theme()
 
 func _file_dropped(files: PackedStringArray):

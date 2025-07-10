@@ -132,3 +132,8 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_samal")
+
+[node name="ApplicationStartup" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
