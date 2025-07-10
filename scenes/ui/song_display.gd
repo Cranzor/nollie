@@ -46,7 +46,7 @@ func animation_appear(start_disappear_timer: bool) -> void:
 		position_tween.tween_property(self, "position", default_position, 0.8)
 	
 	if start_disappear_timer:
-		animation_timer.wait_time = 3.0
+		animation_timer.wait_time = GlobalSettings.song_display_seconds_on_screen
 		animation_timer.start()
 		scroll_start.start()
 

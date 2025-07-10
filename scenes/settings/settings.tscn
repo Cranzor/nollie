@@ -154,6 +154,20 @@ text = "Song display offset from bottom of screen (in pixels): "
 [node name="LineEdit" parent="Window/PanelContainer/TabContainer/Display/OptionInput" index="1"]
 custom_minimum_size = Vector2(50, 0)
 
+[node name="SongDisplaySeconds" parent="Window/PanelContainer/TabContainer/Display" instance=ExtResource("2_vu5fi")]
+layout_mode = 2
+default_value = "3"
+int_only_input = true
+max_value = 15
+min_value = 1
+setting_name = "song_display_seconds_on_screen"
+
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Display/SongDisplaySeconds/MarginContainer" index="0"]
+text = "Time (in seconds) that song display appears (when song title doesn't scroll):"
+
+[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Display/SongDisplaySeconds" index="1"]
+custom_minimum_size = Vector2(50, 0)
+
 [node name="Theme Builder" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
 visible = false
 layout_mode = 2
@@ -169,3 +183,4 @@ metadata/_tab_index = 4
 [editable path="Window/PanelContainer/TabContainer/Controls/PreviousSongControl"]
 [editable path="Window/PanelContainer/TabContainer/Display/ThemeFolderPath"]
 [editable path="Window/PanelContainer/TabContainer/Display/OptionInput"]
+[editable path="Window/PanelContainer/TabContainer/Display/SongDisplaySeconds"]
