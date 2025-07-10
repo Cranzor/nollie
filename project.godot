@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="THPS Tunes"
+config/version="1.0.0.0"
 run/main_scene="uid://dp7m117vpt0vx"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+config/icon="uid://bliispm0hh5qq"
 
 [audio]
 

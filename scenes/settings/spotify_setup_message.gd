@@ -8,10 +8,10 @@ Set the redict URI to: [url]http://127.0.0.1:{port}/callback[/url] (click to cop
 
 After you finish, open the app in your dashboard and paste the Client ID and secret from the top box into the settings above.
 
-To start playing from Spotify, open the Spotify player desktop app or open it in the browser.
-Make sure to click play on a song from within the Spotify player to mark the player as active.
-After that, return to the main menu and click the Spotify toggle to connect.
-You will now be able to control Spotify with your controller."
+1. To start playing from Spotify, open the Spotify player desktop app or open it in the browser.
+2. Make sure to click play on a song from within the Spotify player to mark the player as active.
+3. After that, return to the main menu and click the Spotify toggle to connect.
+If everything worked, your browser will open a page with \"You may close this window\" displayed. You will now be able to control Spotify with your controller."
 
 func _ready() -> void:
 	text = message.format(port)

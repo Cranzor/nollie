@@ -87,8 +87,9 @@ func load_saved_settings():
 	if GlobalSettings.saved_local_music_folder_path != "":
 		handle_music_folder_selected(GlobalSettings.saved_local_music_folder_path)
 	if GlobalSettings.applied_theme_path != "":
-		ResourceLoader.load_threaded_request(GlobalSettings.applied_theme_path)
-		theme_load_timer.start()
+		var load_err = ResourceLoader.load_threaded_request(GlobalSettings.applied_theme_path)
+		if load_err == OK:
+			theme_load_timer.start()
 
 func save_local_music_folder_path(path: String):
 	save_settings_value("general", "saved_local_music_folder_path", GlobalSettings.saved_local_music_folder_path)
