@@ -19,7 +19,7 @@ func previous_track() -> void:
 	pass
 
 
-func set_volume(volume: int) -> void:
+func set_volume(paused: bool) -> void:
 	pass
 
 

@@ -22,7 +22,7 @@ func play() -> void:
 	gopotify.play()
 	request_timer.start()
 	await get_tree().create_timer(2).timeout
-	set_volume(GlobalSettings.in_game_volume)
+	set_volume(false)
 	
 
 func pause() -> void:
@@ -39,8 +39,11 @@ func previous_track() -> void:
 		gopotify.previous()
 		request_timer.start()
 
-func set_volume(volume: int) -> void:
-	gopotify.set_volume(volume)
+func set_volume(paused: bool) -> void:
+	if paused:
+		gopotify.set_volume(GlobalSettings.spotify_pause_volume)
+	else:
+		gopotify.set_volume(GlobalSettings.spotify_in_game_volume)
 
 func establish_spotify_connection() -> void:
 	if gopotify.credentials == null or gopotify.credentials.is_expired():

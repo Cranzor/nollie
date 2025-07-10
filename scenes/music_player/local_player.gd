@@ -15,7 +15,7 @@ var current_track_index: int = 0:
 
 func play() -> void:
 	emit_signal("current_track_changed", get_current_artist_and_track_name())
-	set_volume(GlobalSettings.in_game_volume)
+	set_volume(false)
 	if audio_stream_player.stream_paused:
 		audio_stream_player.set_stream_paused(false)
 		return
@@ -26,7 +26,6 @@ func play() -> void:
 		audio_stream_player.stream = AudioStreamMP3.load_from_file(file_path)
 	audio_stream_player.play()
 	#emit_signal("current_track_changed", get_current_artist_and_track_name())
-	#set_volume(GlobalSettings.in_game_volume)
 
 
 func pause() -> void:
@@ -51,10 +50,15 @@ func previous_track() -> void:
 			play()
 
 
-func set_volume(volume: int) -> void:
-	volume = clampi(volume, 0, 100)
-	var normalized_volume: float = remap(volume, 0, 100, 0, 1)
-	audio_stream_player.volume_linear = normalized_volume
+func set_volume(paused: bool) -> void:
+	if paused:
+		var volume = clampi(GlobalSettings.local_pause_volume, 0, 100)
+		var normalized_volume: float = remap(volume, 0, 100, 0, 1)
+		audio_stream_player.volume_linear = normalized_volume
+	else:
+		var volume = clampi(GlobalSettings.local_in_game_volume, 0, 100)
+		var normalized_volume: float = remap(volume, 0, 100, 0, 1)
+		audio_stream_player.volume_linear = normalized_volume
 
 
 func get_current_artist_and_track_name() -> String:

@@ -26,9 +26,9 @@ func _process(delta: float) -> void:
 
 func _on_game_state_tracker_pause_status_changed(paused_status: Variant) -> void:
 	if paused_status:
-		music_player.set_volume(GlobalSettings.pause_volume)
+		music_player.set_volume(true)
 	else:
-		music_player.set_volume(GlobalSettings.in_game_volume)
+		music_player.set_volume(false)
 
 func handle_spotify_toggle(on: bool):
 	if on:

@@ -1,21 +1,37 @@
 extends Node
 
+var paused: bool
 var settings_cfg_path = "user://settings.cfg"
 
 # volume
-var in_game_volume: int = 100:
+var local_in_game_volume: int = 100:
 	set(value):
-		var prev_value = in_game_volume
-		in_game_volume = value
+		var prev_value = local_in_game_volume
+		local_in_game_volume = value
 		
-		if in_game_volume != prev_value:
+		if local_in_game_volume != prev_value and !paused:
 			emit_signal("volume_changed", false)
-var pause_volume: int = 75:
+var local_pause_volume: int = 50:
 	set(value):
-		var prev_value = pause_volume
-		pause_volume = value
+		var prev_value = local_pause_volume
+		local_pause_volume = value
 		
-		if pause_volume != prev_value:
+		if local_pause_volume != prev_value and paused:
+			emit_signal("volume_changed", true)
+
+var spotify_in_game_volume: int = 100:
+	set(value):
+		var prev_value = spotify_in_game_volume
+		spotify_in_game_volume = value
+		
+		if spotify_in_game_volume != prev_value and !paused:
+			emit_signal("volume_changed", false)
+var spotify_pause_volume: int = 75:
+	set(value):
+		var prev_value = spotify_pause_volume
+		spotify_pause_volume = value
+		
+		if spotify_pause_volume != prev_value and paused:
 			emit_signal("volume_changed", true)
 
 # Spotify

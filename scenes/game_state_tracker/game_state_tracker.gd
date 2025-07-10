@@ -3,6 +3,8 @@ var paused: bool = false:
 	set(value):
 		if value != paused:
 			emit_signal("pause_status_changed", !paused)
+			print(!paused)
+			GlobalSettings.paused = !paused
 		paused = value
 		
 signal pause_status_changed(paused_status)
