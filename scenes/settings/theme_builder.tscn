@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://xafqijikf6us"]
+[gd_scene load_steps=4 format=3 uid="uid://xafqijikf6us"]
 
 [ext_resource type="Script" uid="uid://cbls23q5vcuf0" path="res://scenes/settings/theme_builder.gd" id="1_mr08n"]
 [ext_resource type="PackedScene" uid="uid://nhflufr3eu82" path="res://scenes/settings/theme_builder_input.tscn" id="1_rdvkw"]
+[ext_resource type="Theme" uid="uid://cv8yqgfvys7hm" path="res://themes/check_box.tres" id="1_rgigb"]
 
 [node name="ThemeBuilder" type="ScrollContainer"]
 custom_minimum_size = Vector2(0, 450)
+theme = ExtResource("1_rgigb")
 script = ExtResource("1_mr08n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="ResetToDefault" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Reset Theme to Default"
 
 [node name="ThemeBuilderInput21" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
@@ -128,6 +135,16 @@ theme_builder_type = 4
 layout_mode = 2
 property_to_change = "after_skip_text_bbcode"
 theme_builder_type = 4
+
+[node name="SaveTheme" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Save Theme"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+initial_position = 1
+access = 2
+use_native_dialog = true
 
 [editable path="VBoxContainer/ThemeBuilderInput13"]
 [editable path="VBoxContainer/ThemeBuilderInput14"]

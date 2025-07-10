@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bof0nkrlqih8d" path="res://fonts/Inter/static/Inter_18pt-Regular.ttf" id="2_igdqf"]
 
 [resource]
+default_font = ExtResource("2_igdqf")
 CheckBox/icons/unchecked = ExtResource("1_1hoqd")
 Label/fonts/font = ExtResource("2_igdqf")
 LineEdit/fonts/font = ExtResource("2_igdqf")

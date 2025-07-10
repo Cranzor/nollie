@@ -9,6 +9,7 @@ extends Node
 @onready var music_folder_dialog: FileDialog = $MainMenu/MusicFolderDialog
 @onready var spotify_toggle = $MainMenu/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/SpotifyToggle
 @onready var connection_message = $MainMenu/PanelContainer/VBoxContainer/MarginContainer2/ConnectionMessage
+@onready var window = get_window()
 
 func _ready() -> void:
 	previous_song_button.pressed.connect(_previous_song_button_clicked)
@@ -20,6 +21,7 @@ func _ready() -> void:
 	spotify_toggle.toggled.connect(_spotify_toggle)
 	main_menu.settings_button_pressed.connect(_settings_button_pressed)
 	main_menu.custom_theme_updated.connect(_custom_theme_updated)
+	window.files_dropped.connect(_file_dropped)
 	load_saved_settings()
 
 
@@ -116,3 +118,8 @@ func _custom_theme_updated(custom_theme: SongDisplayTheme):
 	song_display.theme = custom_theme
 	song_display.song_display_theme = custom_theme
 	song_display.set_up_theme()
+
+func _file_dropped(files: PackedStringArray):
+	var file: String = files[0]
+	if file.get_extension() == "tres":
+		_custom_theme_updated(load(file))
