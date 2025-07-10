@@ -21,6 +21,7 @@ func _ready() -> void:
 	spotify_toggle.toggled.connect(_spotify_toggle)
 	main_menu.settings_button_pressed.connect(_settings_button_pressed)
 	main_menu.custom_theme_updated.connect(_custom_theme_updated)
+	main_menu.settings_window_closed.connect(_settings_window_closed)
 	window.files_dropped.connect(_file_dropped)
 	load_saved_settings()
 
@@ -123,3 +124,8 @@ func _file_dropped(files: PackedStringArray):
 	var file: String = files[0]
 	if file.get_extension() == "tres":
 		_custom_theme_updated(load(file))
+		song_display.animation_appear(true)
+
+func _settings_window_closed() -> void:
+	print("hi")
+	song_display.animation_disappear()

@@ -12,6 +12,7 @@ extends Control
 @onready var tab_container: TabContainer = $Window/PanelContainer/TabContainer
 @onready var theme_builder: ScrollContainer
 signal custom_theme_updated(custom_theme: SongDisplayTheme)
+signal settings_closed
 
 func _ready() -> void:
 	settings_cfg = ConfigFile.new()
@@ -30,6 +31,7 @@ func make_window_visible() -> void:
 
 func _on_window_close_requested() -> void:
 	set_cfg_file_values(settings_cfg)
+	emit_signal("settings_closed")
 	self.queue_free()
 
 func set_cfg_file_values(cfg_file: ConfigFile):
