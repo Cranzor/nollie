@@ -109,7 +109,7 @@ func set_up_theme() -> void:
 	
 	song_title.add_theme_color_override("default_color", song_display_theme.track_text_font_color)
 	song_title2.add_theme_color_override("default_color", song_display_theme.track_text_font_color)
-	skip_text.add_theme_color_override("font_color", song_display_theme.skip_text_font_color)
+	skip_text.add_theme_color_override("default_color", song_display_theme.skip_text_font_color)
 	
 	if song_display_theme.background_texture:
 		var style_box_texture: StyleBoxTexture = StyleBoxTexture.new()
@@ -130,9 +130,6 @@ func set_up_theme() -> void:
 	else:
 		right_stick_icon.texture = SongDisplayTheme.new().skip_song_icon
 	
-	#var new_panel_container_style_box = panel_container.get_theme_stylebox("panel").duplicate()
-	#new_panel_container_style_box.bg_color = song_display_theme.background_base_color
-	#panel_container.add_theme_stylebox_override("panel", new_panel_container_style_box)
 	panel_container.self_modulate = song_display_theme.background_modulation
 	music_icon.self_modulate = song_display_theme.music_icon_modulation
 	right_stick_icon.self_modulate = song_display_theme.skip_song_icon_modulation
@@ -148,14 +145,9 @@ func set_up_theme() -> void:
 	skip_text.add_theme_color_override("font_shadow_color", song_display_theme.skip_text_shadow_color)
 	skip_text.add_theme_constant_override("shadow_outline_size", song_display_theme.skip_text_shadow_size)
 	
-	#var song_name = song_title.text
-	#var song_name2 = song_title2.text
-	#song_title.text = song_display_theme.before_track_text_bbcode + song_name + song_display_theme.after_track_text_bbcode
-	#song_title2.text = song_display_theme.before_track_text_bbcode + song_name2 + song_display_theme.after_track_text_bbcode
 	before_track_bb_code = song_display_theme.before_track_text_bbcode
-	after_track_bb_code = song_display_theme.after_track_text_bbcode
 	before_skip_bb_code = song_display_theme.before_skip_text_bbcode
-	after_skip_bb_code = song_display_theme.after_skip_text_bbcode
+
 	update_song_title_labels(current_track_title)
 	update_skip_song_label()
 

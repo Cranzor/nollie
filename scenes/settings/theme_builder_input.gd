@@ -2,7 +2,7 @@ extends HBoxContainer
 
 var window: Window
 var mouse_inside_box: bool = false
-@onready var line_edit = $LineEdit
+@onready var line_edit: LineEdit = $LineEdit
 @onready var check_box = $CheckBox
 @onready var color_picker_button = $ColorPickerButton
 var file_path: String
@@ -26,6 +26,10 @@ func _ready() -> void:
 		var new_text = property_to_change
 		new_text = new_text.capitalize()
 		label.text = new_text + ":"
+	
+	if theme_builder_type == 3:
+		line_edit.text = "1"
+		line_edit.placeholder_text = "0"
 	
 	show_child_nodes(theme_builder_type)
 	if theme_builder_type == 3:
@@ -58,6 +62,8 @@ func _line_edit_text_submitted(new_text: String):
 	var value: Variant = new_text
 	if new_text == "":
 		value = null
+		if theme_builder_type == 4:
+			value = ""
 		emit_signal("theme_value_updated", property_to_change, value)
 		return
 	
