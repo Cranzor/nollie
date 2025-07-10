@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4m54q1xcea0j"]
 
-[ext_resource type="Script" uid="uid://ba8b0nyf1aqn8" path="res://logo.gd" id="1_hgdat"]
+[ext_resource type="Script" uid="uid://ba8b0nyf1aqn8" path="res://scenes/logo/logo.gd" id="1_hgdat"]
 [ext_resource type="FontFile" uid="uid://ckd6cuvbootas" path="res://fonts/Titillium_Web/TitilliumWeb-BoldItalic.ttf" id="1_iyh20"]
 
 [node name="Node2D" type="Node2D"]

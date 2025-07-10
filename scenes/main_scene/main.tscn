@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dukdfu6rhx0v0" path="res://scenes/main_scene/main.gd" id="1_k0xv7"]
 [ext_resource type="PackedScene" uid="uid://bcum7fsxxai3w" path="res://scenes/music_player/music_manager.tscn" id="1_p5fyt"]
 [ext_resource type="PackedScene" uid="uid://cubimvb7ees1l" path="res://scenes/ui/song_display.tscn" id="2_x58px"]
-[ext_resource type="Script" uid="uid://xnix6wp8w8nw" path="res://window_canvas.gd" id="3_j04as"]
-[ext_resource type="Script" uid="uid://c5kd0bqd56bfl" path="res://sprite_2d.gd" id="4_ylb77"]
+[ext_resource type="Script" uid="uid://xnix6wp8w8nw" path="res://scripts/window_canvas.gd" id="3_j04as"]
+[ext_resource type="Script" uid="uid://c5kd0bqd56bfl" path="res://scripts/song_display_area.gd" id="4_ylb77"]
 [ext_resource type="PackedScene" uid="uid://butslodhti3t2" path="res://scenes/ui/main_menu.tscn" id="6_mxx3b"]
 
 [node name="Main" type="Node"]
