@@ -8,7 +8,7 @@ extends Control
 @onready var spotify_client_id_field = $Window/PanelContainer/TabContainer/Spotify/ClientID/LineEdit
 @onready var spotify_client_secret_field = $Window/PanelContainer/TabContainer/Spotify/ClientSecret/LineEdit
 @onready var spotify_client_port_field = $Window/PanelContainer/TabContainer/Spotify/Port/LineEdit
-@onready var theme_builder_tab = $Window/PanelContainer/TabContainer/ThemeBuilder
+@onready var theme_builder_tab = $"Window/PanelContainer/TabContainer/Theme Builder"
 @onready var tab_container: TabContainer = $Window/PanelContainer/TabContainer
 @onready var theme_builder: ScrollContainer
 signal custom_theme_updated(custom_theme: SongDisplayTheme)

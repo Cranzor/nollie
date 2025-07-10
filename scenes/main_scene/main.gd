@@ -10,6 +10,7 @@ extends Node
 @onready var spotify_toggle = $MainMenu/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/SpotifyToggle
 @onready var connection_message = $MainMenu/PanelContainer/VBoxContainer/MarginContainer2/ConnectionMessage
 @onready var window = get_window()
+@onready var theme_load_timer = $ThemeLoadTimer
 
 func _ready() -> void:
 	previous_song_button.pressed.connect(_previous_song_button_clicked)
@@ -23,6 +24,7 @@ func _ready() -> void:
 	main_menu.custom_theme_updated.connect(_custom_theme_updated)
 	main_menu.settings_window_closed.connect(_settings_window_closed)
 	window.files_dropped.connect(_file_dropped)
+	theme_load_timer.timeout.connect(_theme_load_timer_timeout)
 	load_saved_settings()
 
 
@@ -84,16 +86,23 @@ func load_saved_settings():
 	
 	if GlobalSettings.saved_local_music_folder_path != "":
 		handle_music_folder_selected(GlobalSettings.saved_local_music_folder_path)
+	if GlobalSettings.applied_theme_path != "":
+		ResourceLoader.load_threaded_request(GlobalSettings.applied_theme_path)
+		theme_load_timer.start()
 
 func save_local_music_folder_path(path: String):
+	save_settings_value("general", "saved_local_music_folder_path", GlobalSettings.saved_local_music_folder_path)
+
+func save_settings_value(category, key, value):
 	var settings_cfg = ConfigFile.new()
 	if !FileAccess.file_exists(GlobalSettings.settings_cfg_path):
 		return
 	var err = settings_cfg.load(GlobalSettings.settings_cfg_path)
 	if err != OK:
 		return
-	settings_cfg.set_value("general", "saved_local_music_folder_path", GlobalSettings.saved_local_music_folder_path)
+	settings_cfg.set_value(category, key, value)
 	settings_cfg.save(GlobalSettings.settings_cfg_path)
+
 
 func handle_music_folder_selected(dir: String) -> void:
 	GlobalSettings.saved_local_music_folder_path = dir
@@ -125,7 +134,16 @@ func _file_dropped(files: PackedStringArray):
 	if file.get_extension() == "tres":
 		_custom_theme_updated(load(file))
 		song_display.animation_appear(true)
+		GlobalSettings.applied_theme_path = file
+		save_settings_value("display", "applied_theme_path", GlobalSettings.applied_theme_path)
 
 func _settings_window_closed() -> void:
 	print("hi")
 	song_display.animation_disappear()
+
+func _theme_load_timer_timeout() -> void:
+	var status = ResourceLoader.load_threaded_get_status(GlobalSettings.applied_theme_path)
+	if status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
+		_custom_theme_updated(load(GlobalSettings.applied_theme_path))
+	else:
+		theme_load_timer.start()

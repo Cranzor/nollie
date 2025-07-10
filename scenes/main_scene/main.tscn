@@ -47,3 +47,6 @@ size_flags_horizontal = 3
 polygon = PackedVector2Array(-730, -60, 0, -60, 0, 0, -730, 0)
 
 [node name="MainMenu" parent="." instance=ExtResource("6_mxx3b")]
+
+[node name="ThemeLoadTimer" type="Timer" parent="."]
+one_shot = true

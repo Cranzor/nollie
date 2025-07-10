@@ -32,6 +32,7 @@ var song_display_pixel_offset_from_bottom: int = 10:
 	set(value):
 		song_display_pixel_offset_from_bottom = value
 		emit_signal("song_display_offset_changed", value)
+var applied_theme_path: String = ""
 
 # general
 var saved_local_music_folder_path: String

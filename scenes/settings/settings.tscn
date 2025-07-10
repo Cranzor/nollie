@@ -36,11 +36,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_36l1p")
 [node name="TabContainer" type="TabContainer" parent="Window/PanelContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_vu5fi")
-current_tab = 2
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="Spotify" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -116,6 +115,7 @@ text = "Pause volume:"
 custom_minimum_size = Vector2(35, 0)
 
 [node name="Controls" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -131,6 +131,16 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
+[node name="ThemeFolderPath" parent="Window/PanelContainer/TabContainer/Display" instance=ExtResource("2_vu5fi")]
+layout_mode = 2
+setting_name = "applied_theme_path"
+
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Display/ThemeFolderPath/MarginContainer" index="0"]
+text = "Applied theme file path:"
+
+[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Display/ThemeFolderPath" index="1"]
+custom_minimum_size = Vector2(250, 0)
+
 [node name="OptionInput" parent="Window/PanelContainer/TabContainer/Display" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
 default_value = "10"
@@ -144,7 +154,7 @@ text = "Song display offset from bottom of screen (in pixels): "
 [node name="LineEdit" parent="Window/PanelContainer/TabContainer/Display/OptionInput" index="1"]
 custom_minimum_size = Vector2(50, 0)
 
-[node name="ThemeBuilder" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
+[node name="Theme Builder" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4
@@ -157,4 +167,5 @@ metadata/_tab_index = 4
 [editable path="Window/PanelContainer/TabContainer/Sound/InGameVolume"]
 [editable path="Window/PanelContainer/TabContainer/Sound/PauseVolume"]
 [editable path="Window/PanelContainer/TabContainer/Controls/PreviousSongControl"]
+[editable path="Window/PanelContainer/TabContainer/Display/ThemeFolderPath"]
 [editable path="Window/PanelContainer/TabContainer/Display/OptionInput"]
