@@ -37,7 +37,7 @@ display_server/driver.linuxbsd="wayland"
 
 [dotnet]
 
-project/assembly_name="THPS Tunes"
+project/assembly_name="NolliePlayer"
 
 [editor_plugins]
 

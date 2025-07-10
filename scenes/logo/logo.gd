@@ -6,5 +6,3 @@ func _ready() -> void:
 	var texture = viewport.get_texture()
 	await RenderingServer.frame_post_draw
 	var err = viewport.get_texture().get_image().save_png("res://icons/logo.png")
-	print(err)
-	

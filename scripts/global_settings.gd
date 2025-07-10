@@ -3,8 +3,20 @@ extends Node
 var settings_cfg_path = "user://settings.cfg"
 
 # volume
-var in_game_volume: int = 85
-var pause_volume: int = 65
+var in_game_volume: int = 100:
+	set(value):
+		var prev_value = in_game_volume
+		in_game_volume = value
+		
+		if in_game_volume != prev_value:
+			emit_signal("volume_changed", false)
+var pause_volume: int = 75:
+	set(value):
+		var prev_value = pause_volume
+		pause_volume = value
+		
+		if pause_volume != prev_value:
+			emit_signal("volume_changed", true)
 
 # Spotify
 var spotify_client_id: String:
@@ -24,6 +36,7 @@ signal spotify_client_secret_changed(new_client_secret)
 signal spotify_port_changed(new_port)
 signal song_display_offset_changed(new_pixel_offset: int)
 signal applied_theme_path_changed(new_path: String)
+signal volume_changed(paused: bool)
 
 # controls
 var previous_song_control_enabled: bool = false

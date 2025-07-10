@@ -45,7 +45,6 @@ func _on_left_right_timer_timeout() -> void:
 func check_paused():
 	if Input.is_action_just_released("pause"):
 		paused = !paused
-		print("paused:" + str(paused))
 
 func check_quit_button_combo():
 	if Input.is_action_just_pressed("menu_accept"):

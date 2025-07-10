@@ -20,7 +20,6 @@ func play() -> void:
 		audio_stream_player.set_stream_paused(false)
 		return
 	var file_path = get_full_file_path_from_track_name(playlist[current_track_index])
-	print(file_path)
 	if file_path.get_extension() == "wav":
 		audio_stream_player.stream = AudioStreamWAV.load_from_file(file_path)
 	elif file_path.get_extension() == "mp3":

@@ -15,7 +15,6 @@ extends Node
 func _ready() -> void:
 	previous_song_button.pressed.connect(_previous_song_button_clicked)
 	play_button.toggled.connect(_main_menu_button_clicked)
-	play_button.button_down.connect(_test)
 	next_song_button.pressed.connect(_next_song_button_clicked)
 	music_manager.music_player.current_track_changed.connect(_current_track_changed)
 	music_folder_dialog.dir_selected.connect(_music_folder_dir_selected)
@@ -29,14 +28,11 @@ func _ready() -> void:
 
 
 func _main_menu_button_clicked(toggled_on: bool) -> void:
-	print("hi")
 	if toggled_on:
 		music_manager.music_player.play()
 	else:
 		music_manager.music_player.pause()
 
-func _test() -> void:
-	print("clicked")
 
 func _previous_song_button_clicked() -> void:
 	music_manager.music_player.previous_track()
@@ -138,7 +134,6 @@ func _file_dropped(files: PackedStringArray):
 		save_settings_value("display", "applied_theme_path", GlobalSettings.applied_theme_path)
 
 func _settings_window_closed() -> void:
-	print("hi")
 	song_display.animation_disappear()
 
 func _theme_load_timer_timeout() -> void:

@@ -36,11 +36,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_36l1p")
 [node name="TabContainer" type="TabContainer" parent="Window/PanelContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_vu5fi")
-current_tab = 3
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="Spotify" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -91,7 +90,7 @@ metadata/_tab_index = 1
 
 [node name="InGameVolume" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
-default_value = "85"
+default_value = "100"
 int_only_input = true
 max_value = 100
 setting_name = "in_game_volume"
@@ -104,7 +103,7 @@ custom_minimum_size = Vector2(35, 0)
 
 [node name="PauseVolume" parent="Window/PanelContainer/TabContainer/Sound" instance=ExtResource("2_vu5fi")]
 layout_mode = 2
-default_value = "65"
+default_value = "75"
 int_only_input = true
 max_value = 100
 setting_name = "pause_volume"
@@ -128,6 +127,7 @@ setting_name = "previous_song_control_enabled"
 text = "Left stick press (L3) to play previous song:"
 
 [node name="Display" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 

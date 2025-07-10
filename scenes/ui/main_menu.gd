@@ -51,7 +51,7 @@ func _folder_button_pressed() -> void:
 		music_folder_dialog.popup()
 
 func _music_folder_dir_selected(dir: String) -> void:
-	print(dir)
+	pass
 
 func _show_spotify_setup_message():
 	if spotify_check_button.disabled:
