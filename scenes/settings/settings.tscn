@@ -36,11 +36,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_36l1p")
 [node name="TabContainer" type="TabContainer" parent="Window/PanelContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_vu5fi")
-current_tab = 1
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="Spotify" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -85,6 +84,7 @@ fit_content = true
 script = ExtResource("5_vghtj")
 
 [node name="Sound" type="VBoxContainer" parent="Window/PanelContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
