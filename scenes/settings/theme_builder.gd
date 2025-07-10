@@ -38,6 +38,7 @@ func _file_path_entered() -> void:
 func _reset_theme() -> void:
 	new_song_display = default_song_display.duplicate()
 	emit_signal("custom_theme_updated", default_song_display)
+	get_tree().call_group("theme_builder_input", "reset_values")
 
 func _save_theme() -> void:
 	if file_dialog.transient:

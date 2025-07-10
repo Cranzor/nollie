@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cubimvb7ees1l"]
+[gd_scene load_steps=7 format=3 uid="uid://cubimvb7ees1l"]
 
 [ext_resource type="Texture2D" uid="uid://cmgsqcsdrwi1h" path="res://icons/musicOn.png" id="1_6i5vd"]
 [ext_resource type="Script" uid="uid://cailbhg6e8onx" path="res://scenes/ui/song_display.gd" id="1_g7pr0"]
@@ -9,6 +9,8 @@
 bg_color = Color(0.0588235, 0.0588235, 0.0588235, 0.784314)
 corner_radius_top_left = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_samal"]
 
 [node name="SongDisplay" type="Control"]
 layout_mode = 3
@@ -124,3 +126,9 @@ one_shot = true
 [node name="ScrollStart" type="Timer" parent="."]
 wait_time = 1.2
 one_shot = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_samal")

@@ -18,9 +18,11 @@ var before_track_bb_code: String
 var after_track_bb_code: String
 var before_skip_bb_code: String
 var after_skip_bb_code: String
+var default_panel_style_box: StyleBoxFlat
 
 var prev_position
 func _ready() -> void:
+	default_panel_style_box = panel_container.get_theme_stylebox("panel").duplicate()
 	set_up_theme()
 	default_position = position + padding
 	off_screen_pos.y = default_position.y
@@ -109,12 +111,28 @@ func set_up_theme() -> void:
 	song_title2.add_theme_color_override("default_color", song_display_theme.track_text_font_color)
 	skip_text.add_theme_color_override("font_color", song_display_theme.skip_text_font_color)
 	
-	music_icon.texture = song_display_theme.music_icon
-	right_stick_icon.texture = song_display_theme.skip_song_icon
+	if song_display_theme.background_texture:
+		var style_box_texture: StyleBoxTexture = StyleBoxTexture.new()
+		style_box_texture.texture = song_display_theme.background_texture
+		panel_container.add_theme_stylebox_override("panel", style_box_texture)
+	else:
+		var new_panel_container_style_box = default_panel_style_box.duplicate()
+		new_panel_container_style_box.bg_color = song_display_theme.background_base_color
+		panel_container.add_theme_stylebox_override("panel", new_panel_container_style_box)
 	
-	var new_panel_container_style_box = panel_container.get_theme_stylebox("panel").duplicate()
-	new_panel_container_style_box.bg_color = song_display_theme.background_base_color
-	panel_container.add_theme_stylebox_override("panel", new_panel_container_style_box)
+	if song_display_theme.music_icon:
+		music_icon.texture = song_display_theme.music_icon
+	else:
+		music_icon.texture = SongDisplayTheme.new().music_icon
+	
+	if song_display_theme.skip_song_icon:
+		right_stick_icon.texture = song_display_theme.skip_song_icon
+	else:
+		right_stick_icon.texture = SongDisplayTheme.new().skip_song_icon
+	
+	#var new_panel_container_style_box = panel_container.get_theme_stylebox("panel").duplicate()
+	#new_panel_container_style_box.bg_color = song_display_theme.background_base_color
+	#panel_container.add_theme_stylebox_override("panel", new_panel_container_style_box)
 	panel_container.self_modulate = song_display_theme.background_modulation
 	music_icon.self_modulate = song_display_theme.music_icon_modulation
 	right_stick_icon.self_modulate = song_display_theme.skip_song_icon_modulation

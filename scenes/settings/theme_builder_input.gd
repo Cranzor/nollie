@@ -56,6 +56,11 @@ func show_child_nodes(type: int) -> void:
 
 func _line_edit_text_submitted(new_text: String):
 	var value: Variant = new_text
+	if new_text == "":
+		value = null
+		emit_signal("theme_value_updated", property_to_change, value)
+		return
+	
 	if theme_builder_type == 0:
 		if FileAccess.file_exists(new_text):
 			# handle images
@@ -77,3 +82,7 @@ func _check_box_toggled(toggled_on: bool):
 
 func _color_changed(color: Color):
 	emit_signal("theme_value_updated", property_to_change, color)
+
+func reset_values() -> void:
+	color_picker_button.color = Color.WHITE
+	line_edit.text = ""
