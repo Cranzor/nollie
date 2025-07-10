@@ -60,20 +60,25 @@ layout_mode = 2
 property_to_change = "skip_song_icon"
 file_type = 1
 
+[node name="ThemeBuilderInput22" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
+layout_mode = 2
+property_to_change = "background_base_color"
+theme_builder_type = 2
+
 [node name="ThemeBuilderInput10" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
-property_to_change = "background_transparency_level"
-theme_builder_type = 3
+property_to_change = "background_modulation"
+theme_builder_type = 2
 
 [node name="ThemeBuilderInput11" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
-property_to_change = "music_icon_transparency_level"
-theme_builder_type = 3
+property_to_change = "music_icon_modulation"
+theme_builder_type = 2
 
 [node name="ThemeBuilderInput12" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
-property_to_change = "skip_song_icon_transparency_level"
-theme_builder_type = 3
+property_to_change = "skip_song_icon_modulation"
+theme_builder_type = 2
 
 [node name="ThemeBuilderInput13" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
@@ -116,7 +121,7 @@ theme_builder_type = 4
 
 [node name="ThemeBuilderInput19" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
-property_to_change = "after_skip_text_bbcode"
+property_to_change = "before_skip_text_bbcode"
 theme_builder_type = 4
 
 [node name="ThemeBuilderInput20" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]

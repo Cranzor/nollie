@@ -105,10 +105,17 @@ expand_mode = 1
 layout_mode = 2
 theme_override_constants/margin_right = 22
 
-[node name="Skip" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer"]
+[node name="Skip" type="RichTextLabel" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer"]
+clip_contents = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.670588, 0.694118, 0.713726, 1)
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.670588, 0.694118, 0.713726, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
 text = "Skip"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="AnimationTimer" type="Timer" parent="."]
 wait_time = 3.0

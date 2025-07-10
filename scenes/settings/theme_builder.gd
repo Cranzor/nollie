@@ -23,7 +23,6 @@ func _theme_value_updated(property: String, value: Variant):
 
 func _file_dropped(files: PackedStringArray):
 	current_file_path = files[0]
-	get_tree().call_group("theme_builder_input", "update_line_edit_text", current_file_path)
 
 func _file_path_entered() -> void:
 	current_file_path = ""

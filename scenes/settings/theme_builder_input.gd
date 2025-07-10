@@ -9,8 +9,8 @@ var file_path: String
 @onready var label = $MarginContainer/Label
 
 @export_enum("font", "track_text_font_color", "skip_text_font_color", "track_text_shadow_color", "skip_text_shadow_color",
-"track_text_shadow_size", "skip_text_shadow_size", "background_texture", "music_icon", "skip_song_icon", "background_transparency_level",
-"music_icon_transparency_level", "skip_song_icon_transparency_level", "display_music_icon", "display_skip_song_icon", "display_skip_song_text",
+"track_text_shadow_size", "skip_text_shadow_size", "background_texture", "music_icon", "skip_song_icon", "background_base_color", "background_modulation",
+"music_icon_modulation", "skip_song_icon_modulation", "display_music_icon", "display_skip_song_icon", "display_skip_song_text",
 "before_track_text_bbcode", "after_track_text_bbcode", "before_skip_text_bbcode", "after_skip_text_bbcode") var property_to_change: String
 
 @export_enum("File Path", "Check Box", "Color", "Int", "BBCode") var theme_builder_type: int
@@ -42,6 +42,7 @@ func _mouse_entered_box() -> void:
 	if current_file_path != "":
 		line_edit.text = current_file_path
 		emit_signal("file_path_entered")
+		_line_edit_text_submitted(current_file_path)
 
 func show_child_nodes(type: int) -> void:
 	if type == 1:

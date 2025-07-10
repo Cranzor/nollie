@@ -13,6 +13,11 @@ var off_screen_pos: Vector2
 var position_tween: Tween
 var scroll_tween: Tween
 var padding: Vector2 = Vector2(1, 0) # for 1 pixel gap on the right side of song display
+var current_track_title: String = "The Kickflips - Nollie Onward"
+var before_track_bb_code: String
+var after_track_bb_code: String
+var before_skip_bb_code: String
+var after_skip_bb_code: String
 
 var prev_position
 func _ready() -> void:
@@ -50,8 +55,16 @@ func animation_disappear() -> void:
 func update_song_title_labels(passed_title: String) -> void:
 	scroll_container.hide()
 	song_title.show()
-	song_title.text = passed_title
-	song_title2.text = passed_title
+	current_track_title = passed_title
+	song_title.text = get_string_with_bb_code(before_track_bb_code, current_track_title, after_track_bb_code)
+	song_title2.text = get_string_with_bb_code(before_track_bb_code, current_track_title, after_track_bb_code)
+
+func update_skip_song_label() -> void:
+	skip_text.text = get_string_with_bb_code(before_skip_bb_code, "Skip", after_skip_bb_code)
+
+func get_string_with_bb_code(before_bb_code, passed_string, after_bb_code: String) -> String:
+	var title_with_bb_code = before_bb_code + passed_string + after_bb_code
+	return title_with_bb_code
 
 func _size_changed() -> void:
 	var size = margin_container.size
@@ -99,9 +112,12 @@ func set_up_theme() -> void:
 	music_icon.texture = song_display_theme.music_icon
 	right_stick_icon.texture = song_display_theme.skip_song_icon
 	
-	panel_container.self_modulate.a = Color.from_rgba8(0, 0, 0, song_display_theme.background_transparency_level).a
-	music_icon.self_modulate.a = Color.from_rgba8(0, 0, 0, song_display_theme.music_icon_transparency_level).a
-	right_stick_icon.self_modulate.a = Color.from_rgba8(0, 0, 0, song_display_theme.skip_song_icon_transparency_level).a
+	var new_panel_container_style_box = panel_container.get_theme_stylebox("panel").duplicate()
+	new_panel_container_style_box.bg_color = song_display_theme.background_base_color
+	panel_container.add_theme_stylebox_override("panel", new_panel_container_style_box)
+	panel_container.self_modulate = song_display_theme.background_modulation
+	music_icon.self_modulate = song_display_theme.music_icon_modulation
+	right_stick_icon.self_modulate = song_display_theme.skip_song_icon_modulation
 	
 	music_icon.visible = song_display_theme.display_music_icon
 	right_stick_icon.visible = song_display_theme.display_skip_song_icon
@@ -114,9 +130,15 @@ func set_up_theme() -> void:
 	skip_text.add_theme_color_override("font_shadow_color", song_display_theme.skip_text_shadow_color)
 	skip_text.add_theme_constant_override("shadow_outline_size", song_display_theme.skip_text_shadow_size)
 	
-	var song_name = song_title.text
-	var song_name2 = song_title2.text
-	song_title.text = song_display_theme.before_track_text_bbcode + song_name + song_display_theme.after_track_text_bbcode
-	song_title2.text = song_display_theme.before_track_text_bbcode + song_name2 + song_display_theme.after_track_text_bbcode
+	#var song_name = song_title.text
+	#var song_name2 = song_title2.text
+	#song_title.text = song_display_theme.before_track_text_bbcode + song_name + song_display_theme.after_track_text_bbcode
+	#song_title2.text = song_display_theme.before_track_text_bbcode + song_name2 + song_display_theme.after_track_text_bbcode
+	before_track_bb_code = song_display_theme.before_track_text_bbcode
+	after_track_bb_code = song_display_theme.after_track_text_bbcode
+	before_skip_bb_code = song_display_theme.before_skip_text_bbcode
+	after_skip_bb_code = song_display_theme.after_skip_text_bbcode
+	update_song_title_labels(current_track_title)
+	update_skip_song_label()
 
 #TODO: display song when pausing

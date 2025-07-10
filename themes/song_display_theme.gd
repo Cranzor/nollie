@@ -19,10 +19,11 @@ class_name SongDisplayTheme
 @export var music_icon: Texture = preload("res://icons/musicOn.png")
 @export var skip_song_icon: Texture = preload("res://icons/xbox_rs_outline_orange_gray.png")
 
-@export_category("Transparency Levels")  # 0-255
-@export var background_transparency_level: int = 200
-@export var music_icon_transparency_level: int = 255
-@export var skip_song_icon_transparency_level: int = 255
+@export_category("Color Modulation")
+@export var background_base_color: Color = Color(0.059, 0.059, 0.059, 0.784)
+@export var background_modulation: Color = Color(1, 1, 1, 0.78)
+@export var music_icon_modulation: Color = Color.WHITE
+@export var skip_song_icon_modulation: Color = Color.WHITE
 
 @export_category("Hide Sections")
 @export var display_music_icon: bool = true
