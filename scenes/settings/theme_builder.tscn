@@ -116,10 +116,16 @@ layout_mode = 2
 property_to_change = "before_track_text_bbcode"
 theme_builder_type = 4
 
+[node name="LineEdit" parent="VBoxContainer/ThemeBuilderInput16" index="1"]
+placeholder_text = ""
+
 [node name="ThemeBuilderInput18" parent="VBoxContainer" instance=ExtResource("1_rdvkw")]
 layout_mode = 2
 property_to_change = "before_skip_text_bbcode"
 theme_builder_type = 4
+
+[node name="LineEdit" parent="VBoxContainer/ThemeBuilderInput18" index="1"]
+placeholder_text = ""
 
 [node name="SaveTheme" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -134,3 +140,5 @@ use_native_dialog = true
 [editable path="VBoxContainer/ThemeBuilderInput13"]
 [editable path="VBoxContainer/ThemeBuilderInput14"]
 [editable path="VBoxContainer/ThemeBuilderInput15"]
+[editable path="VBoxContainer/ThemeBuilderInput16"]
+[editable path="VBoxContainer/ThemeBuilderInput18"]
