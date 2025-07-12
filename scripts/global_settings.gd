@@ -47,6 +47,7 @@ var spotify_port: String = "8889":
 	set(value):
 		spotify_port = value
 		emit_signal("spotify_port_changed", value)
+var spotify_seconds_before_song_title_displays: float = 1.0
 signal spotify_client_id_changed(new_client_id)
 signal spotify_client_secret_changed(new_client_secret)
 signal spotify_port_changed(new_port)

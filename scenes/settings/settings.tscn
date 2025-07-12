@@ -70,6 +70,26 @@ text = "Port:"
 [node name="LineEdit" parent="Window/PanelContainer/TabContainer/Spotify/Port" index="1"]
 custom_minimum_size = Vector2(50, 0)
 
+[node name="SecondsBeforeSongTitle" parent="Window/PanelContainer/TabContainer/Spotify" instance=ExtResource("2_vu5fi")]
+layout_mode = 2
+default_value = "1.0"
+float_only_input = true
+max_value = 5
+min_value = 0.8
+setting_name = "spotify_seconds_before_song_title_displays"
+
+[node name="OptionText" parent="Window/PanelContainer/TabContainer/Spotify/SecondsBeforeSongTitle/MarginContainer" index="0"]
+text = "Seconds before song title displays:"
+
+[node name="LineEdit" parent="Window/PanelContainer/TabContainer/Spotify/SecondsBeforeSongTitle" index="1"]
+custom_minimum_size = Vector2(50, 0)
+
+[node name="Label" type="Label" parent="Window/PanelContainer/TabContainer/Spotify/SecondsBeforeSongTitle"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_v1hle")
+theme_override_font_sizes/font_size = 14
+text = "(Make this higher if song display isn't appearing)"
+
 [node name="MarginContainer" type="MarginContainer" parent="Window/PanelContainer/TabContainer/Spotify"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -194,7 +214,7 @@ layout_mode = 2
 default_value = "3"
 int_only_input = true
 max_value = 15
-min_value = 1
+min_value = 1.0
 setting_name = "song_display_seconds_on_screen"
 
 [node name="OptionText" parent="Window/PanelContainer/TabContainer/Display/SongDisplaySeconds/MarginContainer" index="0"]
@@ -213,6 +233,7 @@ metadata/_tab_index = 4
 [editable path="Window/PanelContainer/TabContainer/Spotify/ClientID"]
 [editable path="Window/PanelContainer/TabContainer/Spotify/ClientSecret"]
 [editable path="Window/PanelContainer/TabContainer/Spotify/Port"]
+[editable path="Window/PanelContainer/TabContainer/Spotify/SecondsBeforeSongTitle"]
 [editable path="Window/PanelContainer/TabContainer/Sound/LocalInGameVolume"]
 [editable path="Window/PanelContainer/TabContainer/Sound/LocalPauseVolume"]
 [editable path="Window/PanelContainer/TabContainer/Sound/InGameVolume"]

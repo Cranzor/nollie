@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func play() -> void:
 	gopotify.play()
-	request_timer.start()
+	start_request_timer()
 	await get_tree().create_timer(2).timeout
 	set_volume(false)
 	
@@ -32,12 +32,12 @@ func pause() -> void:
 
 func next_track() -> void:
 	gopotify.next()
-	request_timer.start()
+	start_request_timer()
 
 func previous_track() -> void:
 	if GlobalSettings.previous_song_control_enabled:
 		gopotify.previous()
-		request_timer.start()
+		start_request_timer()
 
 func set_volume(paused: bool) -> void:
 	if paused:
@@ -49,7 +49,7 @@ func establish_spotify_connection() -> void:
 	if gopotify.credentials == null or gopotify.credentials.is_expired():
 		gopotify.request_user_authorization()
 		await gopotify.server.credentials_received
-	request_timer.start()
+	start_request_timer()
 
 func _emit_track_changed_signal():
 	var is_playing: bool
@@ -87,8 +87,12 @@ func _client_port_changed(new_port):
 	gopotify.port = new_port
 
 func _track_progress_timeout():
-	request_timer.start()
+	start_request_timer()
 
 func _gopotify_lost_connection():
 	stop_timers()
 	emit_signal("gopotify_lost_connection")
+
+func start_request_timer() -> void:
+	request_timer.wait_time = GlobalSettings.spotify_seconds_before_song_title_displays
+	request_timer.start()

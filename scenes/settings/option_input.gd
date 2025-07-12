@@ -2,6 +2,7 @@ extends Option
 
 @export var default_value: String
 @export var int_only_input: bool
+@export var float_only_input: bool
 @export var is_secret: bool
 
 @onready var line_edit = $LineEdit
@@ -21,6 +22,14 @@ func _text_changed(new_text: String):
 			line_edit.text = clamped_int
 			display_reset_settings(clamped_int)
 			update_global_setting(setting_name, clamped_int)
+		else:
+			set_default_value(default_value)
+	elif float_only_input:
+		if new_text.is_valid_float():
+			var clamped_float = str(clampf(float(new_text), min_value, max_value))
+			line_edit.text = clamped_float
+			display_reset_settings(clamped_float)
+			update_global_setting(setting_name, clamped_float)
 		else:
 			set_default_value(default_value)
 	else:
