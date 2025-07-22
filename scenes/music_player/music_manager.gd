@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("next_song"):
 		music_player.next_track()
 	elif Input.is_action_just_pressed("previous_song"):
-		music_player.previous_track()
+		music_player.previous_track(true)
 
 
 func _on_game_state_tracker_pause_status_changed(paused_status: Variant) -> void:

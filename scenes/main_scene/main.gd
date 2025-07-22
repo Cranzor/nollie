@@ -35,7 +35,7 @@ func _main_menu_button_clicked(toggled_on: bool) -> void:
 
 
 func _previous_song_button_clicked() -> void:
-	music_manager.music_player.previous_track()
+	music_manager.music_player.previous_track(false)
 
 func _next_song_button_clicked() -> void:
 	music_manager.music_player.next_track()

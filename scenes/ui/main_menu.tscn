@@ -109,7 +109,6 @@ texture_normal = ExtResource("4_ei257")
 [node name="SongAndArtist" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="Song" type="Label" parent="PanelContainer/VBoxContainer/SongAndArtist"]
 layout_mode = 2
@@ -117,6 +116,7 @@ theme_override_fonts/font = ExtResource("9_otr3d")
 theme_override_font_sizes/font_size = 18
 text = "Song"
 horizontal_alignment = 1
+text_overrun_behavior = 4
 
 [node name="Artist" type="Label" parent="PanelContainer/VBoxContainer/SongAndArtist"]
 layout_mode = 2
@@ -125,6 +125,7 @@ theme_override_fonts/font = ExtResource("3_p8ri8")
 theme_override_font_sizes/font_size = 12
 text = "Artist"
 horizontal_alignment = 1
+text_overrun_behavior = 4
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.168627)
@@ -195,6 +196,8 @@ theme_override_fonts/font = ExtResource("3_p8ri8")
 text = "Select a local music folder or
 connect to Spotify to get started."
 horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
 script = ExtResource("11_7suek")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]

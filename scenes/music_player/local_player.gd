@@ -43,8 +43,12 @@ func next_track() -> void:
 	play()
 
 
-func previous_track() -> void:
-	if GlobalSettings.previous_song_control_enabled:
+func previous_track(from_controller: bool) -> void:
+	if from_controller and GlobalSettings.previous_song_control_enabled:
+		if current_track_index != 0:
+			current_track_index -= 1
+			play()
+	elif not from_controller:
 		if current_track_index != 0:
 			current_track_index -= 1
 			play()

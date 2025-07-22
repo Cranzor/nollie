@@ -19,9 +19,10 @@ func _ready() -> void:
 
 
 func play() -> void:
+	await get_tree().create_timer(1).timeout
 	gopotify.play()
 	start_request_timer()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	set_volume(false)
 	
 
@@ -34,8 +35,11 @@ func next_track() -> void:
 	gopotify.next()
 	start_request_timer()
 
-func previous_track() -> void:
-	if GlobalSettings.previous_song_control_enabled:
+func previous_track(from_controller: bool) -> void:
+	if from_controller and GlobalSettings.previous_song_control_enabled:
+		gopotify.previous()
+		start_request_timer()
+	elif not from_controller:
 		gopotify.previous()
 		start_request_timer()
 
@@ -49,7 +53,7 @@ func establish_spotify_connection() -> void:
 	if gopotify.credentials == null or gopotify.credentials.is_expired():
 		gopotify.request_user_authorization()
 		await gopotify.server.credentials_received
-	start_request_timer()
+	#start_request_timer() #TODO: auto-start when song is already playing. seems like the Spotify API isn't happy with this now for some reason
 
 func _emit_track_changed_signal():
 	var is_playing: bool

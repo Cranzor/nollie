@@ -11,6 +11,7 @@ script = ExtResource("2_6iqqy")
 metadata/_custom_type_script = "uid://d3q6c1bl67eu5"
 
 [node name="RequestTimer" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 
 [node name="TrackProgress" type="Timer" parent="."]

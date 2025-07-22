@@ -15,7 +15,7 @@ func next_track() -> void:
 	pass
 
 
-func previous_track() -> void:
+func previous_track(from_controller: bool) -> void:
 	pass
 
 
